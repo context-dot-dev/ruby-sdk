@@ -139,6 +139,7 @@ module BrandDev
         url: String,
         ?include_images: bool,
         ?include_links: bool,
+        ?shorten_base64_images: bool,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandWebScrapeMdResponse
 

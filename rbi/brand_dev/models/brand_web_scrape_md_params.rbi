@@ -30,11 +30,19 @@ module BrandDev
       sig { params(include_links: T::Boolean).void }
       attr_writer :include_links
 
+      # Shorten base64-encoded image data in the Markdown output
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :shorten_base64_images
+
+      sig { params(shorten_base64_images: T::Boolean).void }
+      attr_writer :shorten_base64_images
+
       sig do
         params(
           url: String,
           include_images: T::Boolean,
           include_links: T::Boolean,
+          shorten_base64_images: T::Boolean,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -46,6 +54,8 @@ module BrandDev
         include_images: nil,
         # Preserve hyperlinks in Markdown output
         include_links: nil,
+        # Shorten base64-encoded image data in the Markdown output
+        shorten_base64_images: nil,
         request_options: {}
       )
       end
@@ -56,6 +66,7 @@ module BrandDev
             url: String,
             include_images: T::Boolean,
             include_links: T::Boolean,
+            shorten_base64_images: T::Boolean,
             request_options: BrandDev::RequestOptions
           }
         )

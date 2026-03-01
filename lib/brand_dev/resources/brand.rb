@@ -581,13 +581,15 @@ module BrandDev
       # (GFM), and returns the result. Uses automatic proxy escalation to handle blocked
       # sites.
       #
-      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, request_options: {})
+      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, shorten_base64_images: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape and convert to markdown (must include http:// or https:// pro
       #
       # @param include_images [Boolean] Include image references in Markdown output
       #
       # @param include_links [Boolean] Preserve hyperlinks in Markdown output
+      #
+      # @param shorten_base64_images [Boolean] Shorten base64-encoded image data in the Markdown output
       #
       # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -599,7 +601,11 @@ module BrandDev
         @client.request(
           method: :get,
           path: "web/scrape/markdown",
-          query: parsed.transform_keys(include_images: "includeImages", include_links: "includeLinks"),
+          query: parsed.transform_keys(
+            include_images: "includeImages",
+            include_links: "includeLinks",
+            shorten_base64_images: "shortenBase64Images"
+          ),
           model: BrandDev::Models::BrandWebScrapeMdResponse,
           options: options
         )
