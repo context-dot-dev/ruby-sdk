@@ -26,10 +26,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveParams
       def retrieve(params)
         parsed, options = BrandDev::BrandRetrieveParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveResponse,
           options: options
         )
@@ -149,10 +150,11 @@ module BrandDev
       # @see BrandDev::Models::BrandFontsParams
       def fonts(params)
         parsed, options = BrandDev::BrandFontsParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/fonts",
-          query: parsed.transform_keys(timeout_ms: "timeoutMS"),
+          query: query.transform_keys(timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandFontsResponse,
           options: options
         )
@@ -191,10 +193,11 @@ module BrandDev
       # @see BrandDev::Models::BrandIdentifyFromTransactionParams
       def identify_from_transaction(params)
         parsed, options = BrandDev::BrandIdentifyFromTransactionParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/transaction_identifier",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandIdentifyFromTransactionResponse,
           options: options
         )
@@ -287,10 +290,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveByEmailParams
       def retrieve_by_email(params)
         parsed, options = BrandDev::BrandRetrieveByEmailParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve-by-email",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveByEmailResponse,
           options: options
         )
@@ -320,10 +324,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveByIsinParams
       def retrieve_by_isin(params)
         parsed, options = BrandDev::BrandRetrieveByIsinParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve-by-isin",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveByIsinResponse,
           options: options
         )
@@ -352,10 +357,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveByNameParams
       def retrieve_by_name(params)
         parsed, options = BrandDev::BrandRetrieveByNameParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve-by-name",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveByNameResponse,
           options: options
         )
@@ -386,10 +392,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveByTickerParams
       def retrieve_by_ticker(params)
         parsed, options = BrandDev::BrandRetrieveByTickerParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve-by-ticker",
-          query: parsed.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(max_speed: "maxSpeed", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveByTickerResponse,
           options: options
         )
@@ -417,10 +424,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveNaicsParams
       def retrieve_naics(params)
         parsed, options = BrandDev::BrandRetrieveNaicsParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/naics",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             max_results: "maxResults",
             min_results: "minResults",
             timeout_ms: "timeoutMS"
@@ -450,10 +458,11 @@ module BrandDev
       # @see BrandDev::Models::BrandRetrieveSimplifiedParams
       def retrieve_simplified(params)
         parsed, options = BrandDev::BrandRetrieveSimplifiedParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/retrieve-simplified",
-          query: parsed.transform_keys(timeout_ms: "timeoutMS"),
+          query: query.transform_keys(timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandRetrieveSimplifiedResponse,
           options: options
         )
@@ -484,10 +493,11 @@ module BrandDev
       # @see BrandDev::Models::BrandScreenshotParams
       def screenshot(params)
         parsed, options = BrandDev::BrandScreenshotParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/screenshot",
-          query: parsed.transform_keys(full_screenshot: "fullScreenshot"),
+          query: query.transform_keys(full_screenshot: "fullScreenshot"),
           model: BrandDev::Models::BrandScreenshotResponse,
           options: options
         )
@@ -518,10 +528,11 @@ module BrandDev
       # @see BrandDev::Models::BrandStyleguideParams
       def styleguide(params = {})
         parsed, options = BrandDev::BrandStyleguideParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/styleguide",
-          query: parsed.transform_keys(direct_url: "directUrl", timeout_ms: "timeoutMS"),
+          query: query.transform_keys(direct_url: "directUrl", timeout_ms: "timeoutMS"),
           model: BrandDev::Models::BrandStyleguideResponse,
           options: options
         )
@@ -541,10 +552,11 @@ module BrandDev
       # @see BrandDev::Models::BrandWebScrapeHTMLParams
       def web_scrape_html(params)
         parsed, options = BrandDev::BrandWebScrapeHTMLParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "web/scrape/html",
-          query: parsed,
+          query: query,
           model: BrandDev::Models::BrandWebScrapeHTMLResponse,
           options: options
         )
@@ -565,10 +577,11 @@ module BrandDev
       # @see BrandDev::Models::BrandWebScrapeImagesParams
       def web_scrape_images(params)
         parsed, options = BrandDev::BrandWebScrapeImagesParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "web/scrape/images",
-          query: parsed,
+          query: query,
           model: BrandDev::Models::BrandWebScrapeImagesResponse,
           options: options
         )
@@ -598,10 +611,11 @@ module BrandDev
       # @see BrandDev::Models::BrandWebScrapeMdParams
       def web_scrape_md(params)
         parsed, options = BrandDev::BrandWebScrapeMdParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "web/scrape/markdown",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             include_images: "includeImages",
             include_links: "includeLinks",
             shorten_base64_images: "shortenBase64Images"
@@ -629,10 +643,11 @@ module BrandDev
       # @see BrandDev::Models::BrandWebScrapeSitemapParams
       def web_scrape_sitemap(params)
         parsed, options = BrandDev::BrandWebScrapeSitemapParams.dump_request(params)
+        query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "web/scrape/sitemap",
-          query: parsed,
+          query: query,
           model: BrandDev::Models::BrandWebScrapeSitemapResponse,
           options: options
         )
