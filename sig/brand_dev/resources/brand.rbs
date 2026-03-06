@@ -16,10 +16,7 @@ module BrandDev
       ) -> BrandDev::Models::BrandAIProductResponse
 
       def ai_products: (
-        domain: String,
-        direct_url: String,
-        ?max_products: Integer,
-        ?timeout_ms: Integer,
+        body: BrandDev::Models::BrandAIProductsParams::body,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandAIProductsResponse
 
