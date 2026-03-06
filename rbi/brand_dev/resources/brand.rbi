@@ -59,26 +59,15 @@ module BrandDev
       # description, image, pricing, features, and more.
       sig do
         params(
-          domain: String,
-          direct_url: String,
-          max_products: Integer,
-          timeout_ms: Integer,
+          body:
+            T.any(
+              BrandDev::BrandAIProductsParams::Body::ByDomain::OrHash,
+              BrandDev::BrandAIProductsParams::Body::ByDirectURL::OrHash
+            ),
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandAIProductsResponse)
       end
-      def ai_products(
-        # The domain name to analyze.
-        domain:,
-        # A specific URL to use directly as the starting point for extraction without
-        # domain resolution.
-        direct_url:,
-        # Maximum number of products to extract.
-        max_products: nil,
-        # Optional timeout in milliseconds for the request. Maximum allowed value is
-        # 300000ms (5 minutes).
-        timeout_ms: nil,
-        request_options: {}
-      )
+      def ai_products(body:, request_options: {})
       end
 
       # Use AI to extract specific data points from a brand's website. The AI will crawl
