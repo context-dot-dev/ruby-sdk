@@ -42,7 +42,7 @@ class BrandDev::Test::Resources::BrandTest < BrandDev::Test::ResourceTest
   def test_ai_products_required_params
     skip("Mock server tests are disabled")
 
-    response = @brand_dev.brand.ai_products(domain: "domain")
+    response = @brand_dev.brand.ai_products(body: {domain: "domain"})
 
     assert_pattern do
       response => BrandDev::Models::BrandAIProductsResponse

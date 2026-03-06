@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.28.1 (2026-03-06)
+
+Full Changelog: [v0.28.0...v0.28.1](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.28.0...v0.28.1)
+
+### Chores
+
+* **ci:** add build step ([b2d8fd1](https://github.com/brand-dot-dev/ruby-sdk/commit/b2d8fd1f17caeda7ab95d69ba33f7ad2a4848f55))
+* **internal:** codegen related update ([f199738](https://github.com/brand-dot-dev/ruby-sdk/commit/f199738e587d42fef1acb3891f4ef9e71f365f6b))
+* **internal:** codegen related update ([e55e75e](https://github.com/brand-dot-dev/ruby-sdk/commit/e55e75ed640d0deacbc1503eca4e12eb4e6c4131))
+
 ## 0.28.0 (2026-03-01)
 
 Full Changelog: [v0.27.0...v0.28.0](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.27.0...v0.28.0)
