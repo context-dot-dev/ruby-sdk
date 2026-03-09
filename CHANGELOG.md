@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.28.2 (2026-03-07)
+
+Full Changelog: [v0.28.1...v0.28.2](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.28.1...v0.28.2)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([f31da40](https://github.com/brand-dot-dev/ruby-sdk/commit/f31da40ed1b0056693c8deea294bcf7f8ea157d9))
+
 ## 0.28.1 (2026-03-06)
 
 Full Changelog: [v0.28.0...v0.28.1](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.28.0...v0.28.1)
