@@ -1373,6 +1373,11 @@ module BrandDev
             :bulgarian,
             BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
           )
+        CANTONESE =
+          T.let(
+            :cantonese,
+            BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
+          )
         CEBUANO =
           T.let(
             :cebuano,
@@ -1466,6 +1471,11 @@ module BrandDev
         KAZAKH =
           T.let(
             :kazakh,
+            BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
+          )
+        KOREAN =
+          T.let(
+            :korean,
             BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
           )
         KYRGYZ =
@@ -1576,6 +1586,11 @@ module BrandDev
         TAGALOG =
           T.let(
             :tagalog,
+            BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
+          )
+        THAI =
+          T.let(
+            :thai,
             BrandDev::BrandRetrieveByNameParams::ForceLanguage::TaggedSymbol
           )
         TURKISH =
