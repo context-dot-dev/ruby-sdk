@@ -61,6 +61,7 @@ module BrandDev
         AZERI = :azeri
         BENGALI = :bengali
         BULGARIAN = :bulgarian
+        CANTONESE = :cantonese
         CEBUANO = :cebuano
         CROATIAN = :croatian
         CZECH = :czech
@@ -80,6 +81,7 @@ module BrandDev
         INDONESIAN = :indonesian
         ITALIAN = :italian
         KAZAKH = :kazakh
+        KOREAN = :korean
         KYRGYZ = :kyrgyz
         LATIN = :latin
         LATVIAN = :latvian
@@ -102,6 +104,7 @@ module BrandDev
         SWAHILI = :swahili
         SWEDISH = :swedish
         TAGALOG = :tagalog
+        THAI = :thai
         TURKISH = :turkish
         UKRAINIAN = :ukrainian
         URDU = :urdu
