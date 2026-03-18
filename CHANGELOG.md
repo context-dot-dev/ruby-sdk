@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.29.0 (2026-03-18)
+
+Full Changelog: [v0.28.2...v0.29.0](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.28.2...v0.29.0)
+
+### Features
+
+* **api:** api update ([6b3e6eb](https://github.com/brand-dot-dev/ruby-sdk/commit/6b3e6eb32404ba09504f76b9fa73111fb5a49523))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([4b44d16](https://github.com/brand-dot-dev/ruby-sdk/commit/4b44d16f3582378f4b156a6b95a32f3383cc640f))
+
 ## 0.28.2 (2026-03-07)
 
 Full Changelog: [v0.28.1...v0.28.2](https://github.com/brand-dot-dev/ruby-sdk/compare/v0.28.1...v0.28.2)

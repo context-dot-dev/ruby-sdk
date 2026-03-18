@@ -330,9 +330,11 @@ module BrandDev
       # Retrieve brand information using a company name. This endpoint searches for the
       # company by name and returns its brand data.
       #
-      # @overload retrieve_by_name(name:, force_language: nil, max_speed: nil, timeout_ms: nil, request_options: {})
+      # @overload retrieve_by_name(name:, country_gl: nil, force_language: nil, max_speed: nil, timeout_ms: nil, request_options: {})
       #
       # @param name [String] Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft Corporati
+      #
+      # @param country_gl [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl] Optional country code (GL parameter) to specify the country. This affects the ge
       #
       # @param force_language [Symbol, BrandDev::Models::BrandRetrieveByNameParams::ForceLanguage] Optional parameter to force the language of the retrieved brand data.
       #

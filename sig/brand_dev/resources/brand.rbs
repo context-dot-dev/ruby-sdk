@@ -77,6 +77,7 @@ module BrandDev
 
       def retrieve_by_name: (
         name: String,
+        ?country_gl: BrandDev::Models::BrandRetrieveByNameParams::country_gl,
         ?force_language: BrandDev::Models::BrandRetrieveByNameParams::force_language,
         ?max_speed: bool,
         ?timeout_ms: Integer,

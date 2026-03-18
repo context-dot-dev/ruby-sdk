@@ -286,6 +286,7 @@ module BrandDev
       sig do
         params(
           name: String,
+          country_gl: BrandDev::BrandRetrieveByNameParams::CountryGl::OrSymbol,
           force_language:
             BrandDev::BrandRetrieveByNameParams::ForceLanguage::OrSymbol,
           max_speed: T::Boolean,
@@ -297,6 +298,9 @@ module BrandDev
         # Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft
         # Corporation'). Must be 3-30 characters.
         name:,
+        # Optional country code (GL parameter) to specify the country. This affects the
+        # geographic location used for search queries.
+        country_gl: nil,
         # Optional parameter to force the language of the retrieved brand data.
         force_language: nil,
         # Optional parameter to optimize the API call for maximum speed. When set to true,
