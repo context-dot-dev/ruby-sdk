@@ -466,8 +466,7 @@ module BrandDev
       )
       end
 
-      # Scrapes the given URL and returns the raw HTML content of the page. Uses
-      # automatic proxy escalation to handle blocked sites.
+      # Scrapes the given URL and returns the raw HTML content of the page.
       sig do
         params(
           url: String,
@@ -497,9 +496,8 @@ module BrandDev
       )
       end
 
-      # Scrapes the given URL, converts the HTML content to GitHub Flavored Markdown
-      # (GFM), and returns the result. Uses automatic proxy escalation to handle blocked
-      # sites.
+      # Scrapes the given URL, converts the HTML content to Markdown, and returns the
+      # result.
       sig do
         params(
           url: String,
