@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.32.0 (2026-03-25)
+
+Full Changelog: [v0.31.0...v0.32.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v0.31.0...v0.32.0)
+
+### Features
+
+* **api:** manual updates ([6d017ed](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/6d017ed5df52193779f6da273984046f5fa6bfad))
+
 ## 0.31.0 (2026-03-25)
 
 Full Changelog: [v0.30.0...v0.31.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v0.30.0...v0.31.0)

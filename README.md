@@ -26,7 +26,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "brand.dev", "~> 0.31.0"
+gem "brand.dev", "~> 0.32.0"
 ```
 
 <!-- x-release-please-end -->
