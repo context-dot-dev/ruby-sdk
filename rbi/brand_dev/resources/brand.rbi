@@ -529,6 +529,7 @@ module BrandDev
       sig do
         params(
           domain: String,
+          max_links: Integer,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandWebScrapeSitemapResponse)
       end
@@ -536,6 +537,9 @@ module BrandDev
         # Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be
         # automatically normalized and validated.
         domain:,
+        # Maximum number of links to return from the sitemap crawl. Defaults to 10,000.
+        # Minimum is 1, maximum is 100,000.
+        max_links: nil,
         request_options: {}
       )
       end

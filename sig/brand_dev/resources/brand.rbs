@@ -143,6 +143,7 @@ module BrandDev
 
       def web_scrape_sitemap: (
         domain: String,
+        ?max_links: Integer,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandWebScrapeSitemapResponse
 

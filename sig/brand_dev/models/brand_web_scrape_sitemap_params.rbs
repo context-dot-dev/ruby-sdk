@@ -1,7 +1,8 @@
 module BrandDev
   module Models
     type brand_web_scrape_sitemap_params =
-      { domain: String } & BrandDev::Internal::Type::request_parameters
+      { domain: String, max_links: Integer }
+      & BrandDev::Internal::Type::request_parameters
 
     class BrandWebScrapeSitemapParams < BrandDev::Internal::Type::BaseModel
       extend BrandDev::Internal::Type::RequestParameters::Converter
@@ -9,13 +10,19 @@ module BrandDev
 
       attr_accessor domain: String
 
+      attr_reader max_links: Integer?
+
+      def max_links=: (Integer) -> Integer
+
       def initialize: (
         domain: String,
+        ?max_links: Integer,
         ?request_options: BrandDev::request_opts
       ) -> void
 
       def to_hash: -> {
         domain: String,
+        max_links: Integer,
         request_options: BrandDev::RequestOptions
       }
     end
