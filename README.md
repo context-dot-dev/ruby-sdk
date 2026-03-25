@@ -1,23 +1,23 @@
-# Brand Dev Ruby API library
+# Context Dev Ruby API library
 
-The Brand Dev Ruby library provides convenient access to the Brand Dev REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/brand-dot-dev/ruby-sdk#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Context Dev Ruby library provides convenient access to the Context Dev REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/context-dot-dev/ruby-sdk#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## MCP Server
 
-Use the Brand Dev MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
+Use the Context Dev MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=brand.dev-mcp&config=eyJuYW1lIjoiYnJhbmQuZGV2LW1jcCIsInRyYW5zcG9ydCI6Imh0dHAiLCJ1cmwiOiJodHRwczovL2JyYW5kLWRldi5zdGxtY3AuY29tIiwiaGVhZGVycyI6eyJ4LWJyYW5kLWRldi1hcGkta2V5IjoiTXkgQVBJIEtleSJ9fQ)
-[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22brand.dev-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fbrand-dev.stlmcp.com%22%2C%22headers%22%3A%7B%22x-brand-dev-api-key%22%3A%22My%20API%20Key%22%7D%7D)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=context.dev-mcp&config=eyJuYW1lIjoiY29udGV4dC5kZXYtbWNwIiwidHJhbnNwb3J0IjoiaHR0cCIsInVybCI6Imh0dHBzOi8vY29udGV4dC1kZXYuc3RsbWNwLmNvbSIsImhlYWRlcnMiOnsieC1jb250ZXh0LWRldi1hcGkta2V5IjoiTXkgQVBJIEtleSJ9fQ)
+[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22context.dev-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fcontext-dev.stlmcp.com%22%2C%22headers%22%3A%7B%22x-context-dev-api-key%22%3A%22My%20API%20Key%22%7D%7D)
 
 > Note: You may need to set environment variables in your MCP client.
 
 ## Documentation
 
-Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/brand.dev).
+Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/context.dev).
 
-The REST API documentation can be found on [docs.brand.dev](https://docs.brand.dev/).
+The REST API documentation can be found on [docs.context.dev](https://docs.context.dev/).
 
 ## Installation
 
@@ -26,7 +26,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "brand.dev", "~> 0.29.0"
+gem "context.dev", "~> 0.2.1"
 ```
 
 <!-- x-release-please-end -->
@@ -35,30 +35,30 @@ gem "brand.dev", "~> 0.29.0"
 
 ```ruby
 require "bundler/setup"
-require "brand_dev"
+require "context_dev"
 
-brand_dev = BrandDev::Client.new(
-  api_key: ENV["BRAND_DEV_API_KEY"] # This is the default and can be omitted
+context_dev = ContextDev::Client.new(
+  api_key: ENV["CONTEXT_DEV_API_KEY"] # This is the default and can be omitted
 )
 
-brand = brand_dev.brand.retrieve(domain: "REPLACE_ME")
+brand = context_dev.brand.retrieve(domain: "REPLACE_ME")
 
 puts(brand.brand)
 ```
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `BrandDev::Errors::APIError` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `ContextDev::Errors::APIError` will be thrown:
 
 ```ruby
 begin
-  brand = brand_dev.brand.retrieve(domain: "REPLACE_ME")
-rescue BrandDev::Errors::APIConnectionError => e
+  brand = context_dev.brand.retrieve(domain: "REPLACE_ME")
+rescue ContextDev::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
-rescue BrandDev::Errors::RateLimitError => e
+rescue ContextDev::Errors::RateLimitError => e
   puts("A 429 status code was received; we should back off a bit.")
-rescue BrandDev::Errors::APIStatusError => e
+rescue ContextDev::Errors::APIStatusError => e
   puts("Another non-200-range status code was received")
   puts(e.status)
 end
@@ -90,12 +90,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-brand_dev = BrandDev::Client.new(
+context_dev = ContextDev::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-brand_dev.brand.retrieve(domain: "REPLACE_ME", request_options: {max_retries: 5})
+context_dev.brand.retrieve(domain: "REPLACE_ME", request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -104,15 +104,15 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 
 ```ruby
 # Configure the default for all requests:
-brand_dev = BrandDev::Client.new(
+context_dev = ContextDev::Client.new(
   timeout: nil # default is 60
 )
 
 # Or, configure per-request:
-brand_dev.brand.retrieve(domain: "REPLACE_ME", request_options: {timeout: 5})
+context_dev.brand.retrieve(domain: "REPLACE_ME", request_options: {timeout: 5})
 ```
 
-On timeout, `BrandDev::Errors::APITimeoutError` is raised.
+On timeout, `ContextDev::Errors::APITimeoutError` is raised.
 
 Note that requests that time out are retried by default.
 
@@ -120,7 +120,7 @@ Note that requests that time out are retried by default.
 
 ### BaseModel
 
-All parameter and response objects inherit from `BrandDev::Internal::Type::BaseModel`, which provides several conveniences, including:
+All parameter and response objects inherit from `ContextDev::Internal::Type::BaseModel`, which provides several conveniences, including:
 
 1. All fields, including unknown ones, are accessible with `obj[:prop]` syntax, and can be destructured with `obj => {prop: prop}` or pattern-matching syntax.
 
@@ -140,7 +140,7 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 
 ```ruby
 brand =
-  brand_dev.brand.retrieve(
+  context_dev.brand.retrieve(
     domain: "REPLACE_ME",
     request_options: {
       extra_query: {my_query_parameter: value},
@@ -172,9 +172,9 @@ response = client.request(
 
 ### Concurrency & connection pooling
 
-The `BrandDev::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
+The `ContextDev::Client` instances are threadsafe, but are only are fork-safe when there are no in-flight HTTP requests.
 
-Each instance of `BrandDev::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
+Each instance of `ContextDev::Client` has its own HTTP connection pool with a default size of 99. As such, we recommend instantiating the client once per application in most settings.
 
 When all available connections from the pool are checked out, requests wait for a new connection to become available, with queue time counting towards the request timeout.
 
@@ -187,18 +187,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-brand_dev.brand.retrieve(domain: "REPLACE_ME")
+context_dev.brand.retrieve(domain: "REPLACE_ME")
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-brand_dev.brand.retrieve(domain: "REPLACE_ME")
+context_dev.brand.retrieve(domain: "REPLACE_ME")
 
 # You can also splat a full Params class:
-params = BrandDev::BrandRetrieveParams.new(domain: "REPLACE_ME")
-brand_dev.brand.retrieve(**params)
+params = ContextDev::BrandRetrieveParams.new(domain: "REPLACE_ME")
+context_dev.brand.retrieve(**params)
 ```
 
 ### Enums
@@ -206,25 +206,25 @@ brand_dev.brand.retrieve(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :albanian
-puts(BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN)
+# :true
+puts(ContextDev::WebScreenshotParams::FullScreenshot::TRUE)
 
-# Revealed type: `T.all(BrandDev::BrandRetrieveParams::ForceLanguage, Symbol)`
-T.reveal_type(BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN)
+# Revealed type: `T.all(ContextDev::WebScreenshotParams::FullScreenshot, Symbol)`
+T.reveal_type(ContextDev::WebScreenshotParams::FullScreenshot::TRUE)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-brand_dev.brand.retrieve(
-  force_language: BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN,
+context_dev.web.screenshot(
+  full_screenshot: ContextDev::WebScreenshotParams::FullScreenshot::TRUE,
   # …
 )
 
 # Literal values are also permissible:
-brand_dev.brand.retrieve(
-  force_language: :albanian,
+context_dev.web.screenshot(
+  full_screenshot: :true,
   # …
 )
 ```
@@ -241,4 +241,4 @@ Ruby 3.2.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/brand-dot-dev/ruby-sdk/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/context-dot-dev/ruby-sdk/tree/main/CONTRIBUTING.md).

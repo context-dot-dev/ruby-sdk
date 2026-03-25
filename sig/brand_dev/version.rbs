@@ -1,3 +1,0 @@
-module BrandDev
-  VERSION: String
-end
