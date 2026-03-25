@@ -17,7 +17,7 @@ Use the Brand Dev MCP Server to enable AI assistants to interact with this API, 
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/brand.dev).
 
-The REST API documentation can be found on [docs.brand.dev](https://docs.brand.dev/).
+The REST API documentation can be found on [docs.context.dev](https://docs.context.dev/).
 
 ## Installation
 
