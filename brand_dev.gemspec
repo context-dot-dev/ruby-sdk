@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = BrandDev::VERSION
   s.summary = "Ruby library to access the Brand Dev API"
   s.authors = ["Brand Dev"]
-  s.email = "hello@brand.dev"
+  s.email = "hello@context.dev"
   s.homepage = "https://gemdocs.org/gems/brand.dev"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/context-dot-dev/deprecated-brand-ruby-sdk"
