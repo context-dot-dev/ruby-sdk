@@ -40,9 +40,9 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "BrandDev::Internal::Type::BaseModel$"
+    - "ContextDev::Internal::Type::BaseModel$"
     - "^\\s*[A-Z0-9_]+ = :"
-    - "BrandDev::(Models|Resources|Test)::"
+    - "ContextDev::(Models|Resources|Test)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:
