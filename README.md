@@ -1,6 +1,6 @@
 # Brand Dev Ruby API library
 
-The Brand Dev Ruby library provides convenient access to the Brand Dev REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/brand-dot-dev/ruby-sdk#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
+The Brand Dev Ruby library provides convenient access to the Brand Dev REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -241,4 +241,4 @@ Ruby 3.2.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/brand-dot-dev/ruby-sdk/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/tree/main/CONTRIBUTING.md).
