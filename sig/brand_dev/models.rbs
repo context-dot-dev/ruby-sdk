@@ -1,0 +1,41 @@
+module BrandDev
+  class BrandAIProductParams = BrandDev::Models::BrandAIProductParams
+
+  class BrandAIProductsParams = BrandDev::Models::BrandAIProductsParams
+
+  class BrandAIQueryParams = BrandDev::Models::BrandAIQueryParams
+
+  class BrandFontsParams = BrandDev::Models::BrandFontsParams
+
+  class BrandIdentifyFromTransactionParams = BrandDev::Models::BrandIdentifyFromTransactionParams
+
+  class BrandPrefetchByEmailParams = BrandDev::Models::BrandPrefetchByEmailParams
+
+  class BrandPrefetchParams = BrandDev::Models::BrandPrefetchParams
+
+  class BrandRetrieveByEmailParams = BrandDev::Models::BrandRetrieveByEmailParams
+
+  class BrandRetrieveByIsinParams = BrandDev::Models::BrandRetrieveByIsinParams
+
+  class BrandRetrieveByNameParams = BrandDev::Models::BrandRetrieveByNameParams
+
+  class BrandRetrieveByTickerParams = BrandDev::Models::BrandRetrieveByTickerParams
+
+  class BrandRetrieveNaicsParams = BrandDev::Models::BrandRetrieveNaicsParams
+
+  class BrandRetrieveParams = BrandDev::Models::BrandRetrieveParams
+
+  class BrandRetrieveSimplifiedParams = BrandDev::Models::BrandRetrieveSimplifiedParams
+
+  class BrandScreenshotParams = BrandDev::Models::BrandScreenshotParams
+
+  class BrandStyleguideParams = BrandDev::Models::BrandStyleguideParams
+
+  class BrandWebScrapeHTMLParams = BrandDev::Models::BrandWebScrapeHTMLParams
+
+  class BrandWebScrapeImagesParams = BrandDev::Models::BrandWebScrapeImagesParams
+
+  class BrandWebScrapeMdParams = BrandDev::Models::BrandWebScrapeMdParams
+
+  class BrandWebScrapeSitemapParams = BrandDev::Models::BrandWebScrapeSitemapParams
+end

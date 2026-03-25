@@ -1,0 +1,88 @@
+module BrandDev
+  module Models
+    type brand_ai_products_params =
+      { body: BrandDev::Models::BrandAIProductsParams::body }
+      & BrandDev::Internal::Type::request_parameters
+
+    class BrandAIProductsParams < BrandDev::Internal::Type::BaseModel
+      extend BrandDev::Internal::Type::RequestParameters::Converter
+      include BrandDev::Internal::Type::RequestParameters
+
+      attr_accessor body: BrandDev::Models::BrandAIProductsParams::body
+
+      def initialize: (
+        body: BrandDev::Models::BrandAIProductsParams::body,
+        ?request_options: BrandDev::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: BrandDev::Models::BrandAIProductsParams::body,
+        request_options: BrandDev::RequestOptions
+      }
+
+      type body =
+        BrandDev::BrandAIProductsParams::Body::ByDomain
+        | BrandDev::BrandAIProductsParams::Body::ByDirectURL
+
+      module Body
+        extend BrandDev::Internal::Type::Union
+
+        type by_domain =
+          { domain: String, max_products: Integer, timeout_ms: Integer }
+
+        class ByDomain < BrandDev::Internal::Type::BaseModel
+          attr_accessor domain: String
+
+          attr_reader max_products: Integer?
+
+          def max_products=: (Integer) -> Integer
+
+          attr_reader timeout_ms: Integer?
+
+          def timeout_ms=: (Integer) -> Integer
+
+          def initialize: (
+            domain: String,
+            ?max_products: Integer,
+            ?timeout_ms: Integer
+          ) -> void
+
+          def to_hash: -> {
+            domain: String,
+            max_products: Integer,
+            timeout_ms: Integer
+          }
+        end
+
+        type by_direct_url =
+          { direct_url: String, max_products: Integer, timeout_ms: Integer }
+
+        class ByDirectURL < BrandDev::Internal::Type::BaseModel
+          attr_accessor direct_url: String
+
+          attr_reader max_products: Integer?
+
+          def max_products=: (Integer) -> Integer
+
+          attr_reader timeout_ms: Integer?
+
+          def timeout_ms=: (Integer) -> Integer
+
+          def initialize: (
+            direct_url: String,
+            ?max_products: Integer,
+            ?timeout_ms: Integer
+          ) -> void
+
+          def to_hash: -> {
+            direct_url: String,
+            max_products: Integer,
+            timeout_ms: Integer
+          }
+        end
+
+        def self?.variants: -> ::Array[BrandDev::Models::BrandAIProductsParams::body]
+      end
+    end
+  end
+end

@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    context.dev (0.2.1)
+    brand.dev (0.30.0)
       cgi
       connection_pool
 
@@ -205,7 +205,7 @@ PLATFORMS
 
 DEPENDENCIES
   async
-  context.dev!
+  brand.dev!
   minitest
   minitest-focus
   minitest-hooks

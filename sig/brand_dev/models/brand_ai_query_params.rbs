@@ -1,0 +1,218 @@
+module BrandDev
+  module Models
+    type brand_ai_query_params =
+      {
+        data_to_extract: ::Array[BrandDev::BrandAIQueryParams::DataToExtract],
+        domain: String,
+        specific_pages: BrandDev::BrandAIQueryParams::SpecificPages,
+        timeout_ms: Integer
+      }
+      & BrandDev::Internal::Type::request_parameters
+
+    class BrandAIQueryParams < BrandDev::Internal::Type::BaseModel
+      extend BrandDev::Internal::Type::RequestParameters::Converter
+      include BrandDev::Internal::Type::RequestParameters
+
+      attr_accessor data_to_extract: ::Array[BrandDev::BrandAIQueryParams::DataToExtract]
+
+      attr_accessor domain: String
+
+      attr_reader specific_pages: BrandDev::BrandAIQueryParams::SpecificPages?
+
+      def specific_pages=: (
+        BrandDev::BrandAIQueryParams::SpecificPages
+      ) -> BrandDev::BrandAIQueryParams::SpecificPages
+
+      attr_reader timeout_ms: Integer?
+
+      def timeout_ms=: (Integer) -> Integer
+
+      def initialize: (
+        data_to_extract: ::Array[BrandDev::BrandAIQueryParams::DataToExtract],
+        domain: String,
+        ?specific_pages: BrandDev::BrandAIQueryParams::SpecificPages,
+        ?timeout_ms: Integer,
+        ?request_options: BrandDev::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        data_to_extract: ::Array[BrandDev::BrandAIQueryParams::DataToExtract],
+        domain: String,
+        specific_pages: BrandDev::BrandAIQueryParams::SpecificPages,
+        timeout_ms: Integer,
+        request_options: BrandDev::RequestOptions
+      }
+
+      type data_to_extract =
+        {
+          datapoint_description: String,
+          datapoint_example: String,
+          datapoint_name: String,
+          datapoint_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_type,
+          datapoint_list_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type,
+          datapoint_object_schema: ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+        }
+
+      class DataToExtract < BrandDev::Internal::Type::BaseModel
+        attr_accessor datapoint_description: String
+
+        attr_accessor datapoint_example: String
+
+        attr_accessor datapoint_name: String
+
+        attr_accessor datapoint_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_type
+
+        attr_reader datapoint_list_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type?
+
+        def datapoint_list_type=: (
+          BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type
+        ) -> BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type
+
+        attr_reader datapoint_object_schema: ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]?
+
+        def datapoint_object_schema=: (
+          ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+        ) -> ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+
+        def initialize: (
+          datapoint_description: String,
+          datapoint_example: String,
+          datapoint_name: String,
+          datapoint_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_type,
+          ?datapoint_list_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type,
+          ?datapoint_object_schema: ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+        ) -> void
+
+        def to_hash: -> {
+          datapoint_description: String,
+          datapoint_example: String,
+          datapoint_name: String,
+          datapoint_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_type,
+          datapoint_list_type: BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type,
+          datapoint_object_schema: ::Hash[Symbol, BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+        }
+
+        type datapoint_type = :text | :number | :date | :boolean | :list | :url
+
+        module DatapointType
+          extend BrandDev::Internal::Type::Enum
+
+          TEXT: :text
+          NUMBER: :number
+          DATE: :date
+          BOOLEAN: :boolean
+          LIST: :list
+          URL: :url
+
+          def self?.values: -> ::Array[BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_type]
+        end
+
+        type datapoint_list_type =
+          :string | :text | :number | :date | :boolean | :list | :url | :object
+
+        module DatapointListType
+          extend BrandDev::Internal::Type::Enum
+
+          STRING: :string
+          TEXT: :text
+          NUMBER: :number
+          DATE: :date
+          BOOLEAN: :boolean
+          LIST: :list
+          URL: :url
+          OBJECT: :object
+
+          def self?.values: -> ::Array[BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_list_type]
+        end
+
+        type datapoint_object_schema = :string | :number | :date | :boolean
+
+        module DatapointObjectSchema
+          extend BrandDev::Internal::Type::Enum
+
+          STRING: :string
+          NUMBER: :number
+          DATE: :date
+          BOOLEAN: :boolean
+
+          def self?.values: -> ::Array[BrandDev::Models::BrandAIQueryParams::DataToExtract::datapoint_object_schema]
+        end
+      end
+
+      type specific_pages =
+        {
+          about_us: bool,
+          blog: bool,
+          careers: bool,
+          contact_us: bool,
+          faq: bool,
+          home_page: bool,
+          pricing: bool,
+          privacy_policy: bool,
+          terms_and_conditions: bool
+        }
+
+      class SpecificPages < BrandDev::Internal::Type::BaseModel
+        attr_reader about_us: bool?
+
+        def about_us=: (bool) -> bool
+
+        attr_reader blog: bool?
+
+        def blog=: (bool) -> bool
+
+        attr_reader careers: bool?
+
+        def careers=: (bool) -> bool
+
+        attr_reader contact_us: bool?
+
+        def contact_us=: (bool) -> bool
+
+        attr_reader faq: bool?
+
+        def faq=: (bool) -> bool
+
+        attr_reader home_page: bool?
+
+        def home_page=: (bool) -> bool
+
+        attr_reader pricing: bool?
+
+        def pricing=: (bool) -> bool
+
+        attr_reader privacy_policy: bool?
+
+        def privacy_policy=: (bool) -> bool
+
+        attr_reader terms_and_conditions: bool?
+
+        def terms_and_conditions=: (bool) -> bool
+
+        def initialize: (
+          ?about_us: bool,
+          ?blog: bool,
+          ?careers: bool,
+          ?contact_us: bool,
+          ?faq: bool,
+          ?home_page: bool,
+          ?pricing: bool,
+          ?privacy_policy: bool,
+          ?terms_and_conditions: bool
+        ) -> void
+
+        def to_hash: -> {
+          about_us: bool,
+          blog: bool,
+          careers: bool,
+          contact_us: bool,
+          faq: bool,
+          home_page: bool,
+          pricing: bool,
+          privacy_policy: bool,
+          terms_and_conditions: bool
+        }
+      end
+    end
+  end
+end

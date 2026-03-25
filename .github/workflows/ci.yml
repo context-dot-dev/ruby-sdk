@@ -21,9 +21,9 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    runs-on: ${{ github.repository == 'stainless-sdks/context.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: ${{ github.repository == 'stainless-sdks/brand.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: |-
-      github.repository == 'stainless-sdks/context.dev-ruby' &&
+      github.repository == 'stainless-sdks/brand.dev-ruby' &&
       (github.event_name == 'push' || github.event.pull_request.head.repo.fork) &&
       (github.event_name != 'push' || github.event.head_commit.message != 'codegen metadata')
     steps:
@@ -37,7 +37,7 @@ jobs:
 
       - name: Get GitHub OIDC Token
         if: |-
-          github.repository == 'stainless-sdks/context.dev-ruby' &&
+          github.repository == 'stainless-sdks/brand.dev-ruby' &&
           !startsWith(github.ref, 'refs/heads/stl/')
         id: github-oidc
         uses: actions/github-script@v8
@@ -46,18 +46,18 @@ jobs:
 
       - name: Build and upload gem artifacts
         if: |-
-          github.repository == 'stainless-sdks/context.dev-ruby' &&
+          github.repository == 'stainless-sdks/brand.dev-ruby' &&
           !startsWith(github.ref, 'refs/heads/stl/')
         env:
           URL: https://pkg.stainless.com/s
           AUTH: ${{ steps.github-oidc.outputs.github_token }}
           SHA: ${{ github.sha }}
-          PACKAGE_NAME: context_dev
+          PACKAGE_NAME: brand_dev
         run: ./scripts/utils/upload-artifact.sh
   lint:
     timeout-minutes: 10
     name: lint
-    runs-on: ${{ github.repository == 'stainless-sdks/context.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: ${{ github.repository == 'stainless-sdks/brand.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
 
     steps:
@@ -74,7 +74,7 @@ jobs:
   test:
     timeout-minutes: 10
     name: test
-    runs-on: ${{ github.repository == 'stainless-sdks/context.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: ${{ github.repository == 'stainless-sdks/brand.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
     if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
     steps:
       - uses: actions/checkout@v6
@@ -87,3 +87,31 @@ jobs:
 
       - name: Run tests
         run: ./scripts/test
+
+  publish:
+    timeout-minutes: 10
+    name: publish gem
+    runs-on: ${{ github.repository == 'stainless-sdks/brand.dev-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
+    needs: [lint]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: false
+      - run: |-
+          bundle install
+
+      - name: Build gem
+        run: gem build brand_dev.gemspec
+
+      - name: Publish gem to RubyGems
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.PUSH_GEM_API_KEY }}
+        run: |
+          mkdir -p ~/.gem
+          echo ":rubygems_api_key: $GEM_HOST_API_KEY" > ~/.gem/credentials
+          chmod 0600 ~/.gem/credentials
+          gem push brand.dev-*.gem

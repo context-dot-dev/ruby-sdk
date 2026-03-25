@@ -60,7 +60,7 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/context_dev/version.rb",
+  "version-file": "lib/brand_dev/version.rb",
   "extra-files": [
     {
       "type": "ruby-readme",

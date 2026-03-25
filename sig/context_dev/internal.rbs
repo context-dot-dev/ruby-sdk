@@ -1,9 +1,0 @@
-module ContextDev
-  module Internal
-    extend ContextDev::Internal::Util::SorbetRuntimeSupport
-
-    type file_input = Pathname | StringIO | IO | String | ContextDev::FilePart
-
-    OMIT: Object
-  end
-end

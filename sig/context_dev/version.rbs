@@ -1,3 +1,0 @@
-module ContextDev
-  VERSION: String
-end
