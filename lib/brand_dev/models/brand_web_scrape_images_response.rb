@@ -75,6 +75,10 @@ module BrandDev
           LINK = :link
           SOURCE = :source
           VIDEO = :video
+          CSS = :css
+          OBJECT = :object
+          META = :meta
+          BACKGROUND = :background
 
           # @!method self.values
           #   @return [Array<Symbol>]

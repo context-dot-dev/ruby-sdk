@@ -57,7 +57,16 @@ module BrandDev
           type: BrandDev::Models::BrandWebScrapeImagesResponse::Image::type_
         }
 
-        type element = :img | :svg | :link | :source | :video
+        type element =
+          :img
+          | :svg
+          | :link
+          | :source
+          | :video
+          | :css
+          | :object
+          | :meta
+          | :background
 
         module Element
           extend BrandDev::Internal::Type::Enum
@@ -67,6 +76,10 @@ module BrandDev
           LINK: :link
           SOURCE: :source
           VIDEO: :video
+          CSS: :css
+          OBJECT: :object
+          META: :meta
+          BACKGROUND: :background
 
           def self?.values: -> ::Array[BrandDev::Models::BrandWebScrapeImagesResponse::Image::element]
         end

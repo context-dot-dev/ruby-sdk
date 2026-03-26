@@ -172,6 +172,26 @@ module BrandDev
               :video,
               BrandDev::Models::BrandWebScrapeImagesResponse::Image::Element::TaggedSymbol
             )
+          CSS =
+            T.let(
+              :css,
+              BrandDev::Models::BrandWebScrapeImagesResponse::Image::Element::TaggedSymbol
+            )
+          OBJECT =
+            T.let(
+              :object,
+              BrandDev::Models::BrandWebScrapeImagesResponse::Image::Element::TaggedSymbol
+            )
+          META =
+            T.let(
+              :meta,
+              BrandDev::Models::BrandWebScrapeImagesResponse::Image::Element::TaggedSymbol
+            )
+          BACKGROUND =
+            T.let(
+              :background,
+              BrandDev::Models::BrandWebScrapeImagesResponse::Image::Element::TaggedSymbol
+            )
 
           sig do
             override.returns(
