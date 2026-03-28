@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.1.0 (2026-03-28)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** api update ([03558d9](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/03558d9514387f8e11a927a53a78d97bf38d966a))
+* **api:** api update ([f1e52c1](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/f1e52c1ea2bcc9535493849a5ac5243313e1541b))
+
+
+### Bug Fixes
+
+* **internal:** correct multipart form field name encoding ([6455f42](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/6455f428805bd7af12d6d18a54ff64c54cabfbb3))
+
+
+### Chores
+
+* **ci:** support opting out of skipping builds on metadata-only commits ([efb0a18](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/efb0a181cf5eef3650a352c3c97b32eb888bdc81))
+
 ## 1.0.0 (2026-03-25)
 
 Full Changelog: [v0.32.0...v1.0.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v0.32.0...v1.0.0)
