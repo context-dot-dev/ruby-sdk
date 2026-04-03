@@ -93,11 +93,7 @@ module BrandDev
 
         # Primary colors used on the website
         sig do
-          returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Colors
-            )
-          )
+          returns(BrandDev::Models::BrandStyleguideResponse::Styleguide::Colors)
         end
         attr_reader :colors
 
@@ -112,9 +108,7 @@ module BrandDev
         # UI component styles
         sig do
           returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Components
-            )
+            BrandDev::Models::BrandStyleguideResponse::Styleguide::Components
           )
         end
         attr_reader :components
@@ -130,9 +124,7 @@ module BrandDev
         # Spacing system used on the website
         sig do
           returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing
-            )
+            BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing
           )
         end
         attr_reader :element_spacing
@@ -148,27 +140,15 @@ module BrandDev
         # The primary color mode of the website design
         sig do
           returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Mode::TaggedSymbol
-            )
+            BrandDev::Models::BrandStyleguideResponse::Styleguide::Mode::TaggedSymbol
           )
         end
-        attr_reader :mode
-
-        sig do
-          params(
-            mode:
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Mode::OrSymbol
-          ).void
-        end
-        attr_writer :mode
+        attr_accessor :mode
 
         # Shadow styles used on the website
         sig do
           returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows
-            )
+            BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows
           )
         end
         attr_reader :shadows
@@ -184,9 +164,7 @@ module BrandDev
         # Typography styles used on the website
         sig do
           returns(
-            T.nilable(
-              BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography
-            )
+            BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography
           )
         end
         attr_reader :typography
@@ -218,17 +196,17 @@ module BrandDev
         end
         def self.new(
           # Primary colors used on the website
-          colors: nil,
+          colors:,
           # UI component styles
-          components: nil,
+          components:,
           # Spacing system used on the website
-          element_spacing: nil,
+          element_spacing:,
           # The primary color mode of the website design
-          mode: nil,
+          mode:,
           # Shadow styles used on the website
-          shadows: nil,
+          shadows:,
           # Typography styles used on the website
-          typography: nil
+          typography:
         )
         end
 
@@ -262,26 +240,17 @@ module BrandDev
               )
             end
 
-          # Accent color of the website (hex format)
-          sig { returns(T.nilable(String)) }
-          attr_reader :accent
+          # Accent color (hex format)
+          sig { returns(String) }
+          attr_accessor :accent
 
-          sig { params(accent: String).void }
-          attr_writer :accent
+          # Background color (hex format)
+          sig { returns(String) }
+          attr_accessor :background
 
-          # Background color of the website (hex format)
-          sig { returns(T.nilable(String)) }
-          attr_reader :background
-
-          sig { params(background: String).void }
-          attr_writer :background
-
-          # Text color of the website (hex format)
-          sig { returns(T.nilable(String)) }
-          attr_reader :text
-
-          sig { params(text: String).void }
-          attr_writer :text
+          # Text color (hex format)
+          sig { returns(String) }
+          attr_accessor :text
 
           # Primary colors used on the website
           sig do
@@ -290,12 +259,12 @@ module BrandDev
             )
           end
           def self.new(
-            # Accent color of the website (hex format)
-            accent: nil,
-            # Background color of the website (hex format)
-            background: nil,
-            # Text color of the website (hex format)
-            text: nil
+            # Accent color (hex format)
+            accent:,
+            # Background color (hex format)
+            background:,
+            # Text color (hex format)
+            text:
           )
           end
 
@@ -320,9 +289,7 @@ module BrandDev
           # Button component styles
           sig do
             returns(
-              T.nilable(
-                BrandDev::Models::BrandStyleguideResponse::Styleguide::Components::Button
-              )
+              BrandDev::Models::BrandStyleguideResponse::Styleguide::Components::Button
             )
           end
           attr_reader :button
@@ -364,7 +331,7 @@ module BrandDev
           end
           def self.new(
             # Button component styles
-            button: nil,
+            button:,
             # Card component style
             card: nil
           )
@@ -392,7 +359,6 @@ module BrandDev
                 )
               end
 
-            # Link button style
             sig do
               returns(
                 T.nilable(
@@ -410,7 +376,6 @@ module BrandDev
             end
             attr_writer :link
 
-            # Primary button style
             sig do
               returns(
                 T.nilable(
@@ -428,7 +393,6 @@ module BrandDev
             end
             attr_writer :primary
 
-            # Secondary button style
             sig do
               returns(
                 T.nilable(
@@ -457,14 +421,7 @@ module BrandDev
                   BrandDev::Models::BrandStyleguideResponse::Styleguide::Components::Button::Secondary::OrHash
               ).returns(T.attached_class)
             end
-            def self.new(
-              # Link button style
-              link: nil,
-              # Primary button style
-              primary: nil,
-              # Secondary button style
-              secondary: nil
-            )
+            def self.new(link: nil, primary: nil, secondary: nil)
             end
 
             sig do
@@ -491,73 +448,75 @@ module BrandDev
                   )
                 end
 
+              sig { returns(String) }
+              attr_accessor :background_color
+
+              # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+              # alpha)
+              sig { returns(String) }
+              attr_accessor :border_color
+
+              sig { returns(String) }
+              attr_accessor :border_radius
+
+              sig { returns(String) }
+              attr_accessor :border_style
+
+              sig { returns(String) }
+              attr_accessor :border_width
+
+              # Computed box-shadow (comma-separated layers when present)
+              sig { returns(String) }
+              attr_accessor :box_shadow
+
+              sig { returns(String) }
+              attr_accessor :color
+
+              # Ready-to-use CSS declaration block for this component style
+              sig { returns(String) }
+              attr_accessor :css
+
+              sig { returns(String) }
+              attr_accessor :font_size
+
+              sig { returns(Float) }
+              attr_accessor :font_weight
+
+              # Sampled minimum height of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_height
+
+              # Sampled minimum width of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_width
+
+              sig { returns(String) }
+              attr_accessor :padding
+
+              sig { returns(String) }
+              attr_accessor :text_decoration
+
+              # Full ordered font list from computed font-family
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :font_fallbacks
+
+              sig { params(font_fallbacks: T::Array[String]).void }
+              attr_writer :font_fallbacks
+
+              # Primary button typeface (first in fontFallbacks)
               sig { returns(T.nilable(String)) }
-              attr_reader :background_color
+              attr_reader :font_family
 
-              sig { params(background_color: String).void }
-              attr_writer :background_color
+              sig { params(font_family: String).void }
+              attr_writer :font_family
 
+              # Hex color of the underline when it differs from the text color
               sig { returns(T.nilable(String)) }
-              attr_reader :border_color
+              attr_reader :text_decoration_color
 
-              sig { params(border_color: String).void }
-              attr_writer :border_color
+              sig { params(text_decoration_color: String).void }
+              attr_writer :text_decoration_color
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_radius
-
-              sig { params(border_radius: String).void }
-              attr_writer :border_radius
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_style
-
-              sig { params(border_style: String).void }
-              attr_writer :border_style
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_width
-
-              sig { params(border_width: String).void }
-              attr_writer :border_width
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :box_shadow
-
-              sig { params(box_shadow: String).void }
-              attr_writer :box_shadow
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :color
-
-              sig { params(color: String).void }
-              attr_writer :color
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
-
-              sig { params(font_size: String).void }
-              attr_writer :font_size
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
-
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :padding
-
-              sig { params(padding: String).void }
-              attr_writer :padding
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :text_decoration
-
-              sig { params(text_decoration: String).void }
-              attr_writer :text_decoration
-
-              # Link button style
               sig do
                 params(
                   background_color: String,
@@ -567,24 +526,45 @@ module BrandDev
                   border_width: String,
                   box_shadow: String,
                   color: String,
+                  css: String,
                   font_size: String,
                   font_weight: Float,
+                  min_height: String,
+                  min_width: String,
                   padding: String,
-                  text_decoration: String
+                  text_decoration: String,
+                  font_fallbacks: T::Array[String],
+                  font_family: String,
+                  text_decoration_color: String
                 ).returns(T.attached_class)
               end
               def self.new(
-                background_color: nil,
-                border_color: nil,
-                border_radius: nil,
-                border_style: nil,
-                border_width: nil,
-                box_shadow: nil,
-                color: nil,
-                font_size: nil,
-                font_weight: nil,
-                padding: nil,
-                text_decoration: nil
+                background_color:,
+                # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+                # alpha)
+                border_color:,
+                border_radius:,
+                border_style:,
+                border_width:,
+                # Computed box-shadow (comma-separated layers when present)
+                box_shadow:,
+                color:,
+                # Ready-to-use CSS declaration block for this component style
+                css:,
+                font_size:,
+                font_weight:,
+                # Sampled minimum height of the button box (typically px)
+                min_height:,
+                # Sampled minimum width of the button box (typically px)
+                min_width:,
+                padding:,
+                text_decoration:,
+                # Full ordered font list from computed font-family
+                font_fallbacks: nil,
+                # Primary button typeface (first in fontFallbacks)
+                font_family: nil,
+                # Hex color of the underline when it differs from the text color
+                text_decoration_color: nil
               )
               end
 
@@ -598,10 +578,16 @@ module BrandDev
                     border_width: String,
                     box_shadow: String,
                     color: String,
+                    css: String,
                     font_size: String,
                     font_weight: Float,
+                    min_height: String,
+                    min_width: String,
                     padding: String,
-                    text_decoration: String
+                    text_decoration: String,
+                    font_fallbacks: T::Array[String],
+                    font_family: String,
+                    text_decoration_color: String
                   }
                 )
               end
@@ -618,73 +604,75 @@ module BrandDev
                   )
                 end
 
+              sig { returns(String) }
+              attr_accessor :background_color
+
+              # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+              # alpha)
+              sig { returns(String) }
+              attr_accessor :border_color
+
+              sig { returns(String) }
+              attr_accessor :border_radius
+
+              sig { returns(String) }
+              attr_accessor :border_style
+
+              sig { returns(String) }
+              attr_accessor :border_width
+
+              # Computed box-shadow (comma-separated layers when present)
+              sig { returns(String) }
+              attr_accessor :box_shadow
+
+              sig { returns(String) }
+              attr_accessor :color
+
+              # Ready-to-use CSS declaration block for this component style
+              sig { returns(String) }
+              attr_accessor :css
+
+              sig { returns(String) }
+              attr_accessor :font_size
+
+              sig { returns(Float) }
+              attr_accessor :font_weight
+
+              # Sampled minimum height of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_height
+
+              # Sampled minimum width of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_width
+
+              sig { returns(String) }
+              attr_accessor :padding
+
+              sig { returns(String) }
+              attr_accessor :text_decoration
+
+              # Full ordered font list from computed font-family
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :font_fallbacks
+
+              sig { params(font_fallbacks: T::Array[String]).void }
+              attr_writer :font_fallbacks
+
+              # Primary button typeface (first in fontFallbacks)
               sig { returns(T.nilable(String)) }
-              attr_reader :background_color
+              attr_reader :font_family
 
-              sig { params(background_color: String).void }
-              attr_writer :background_color
+              sig { params(font_family: String).void }
+              attr_writer :font_family
 
+              # Hex color of the underline when it differs from the text color
               sig { returns(T.nilable(String)) }
-              attr_reader :border_color
+              attr_reader :text_decoration_color
 
-              sig { params(border_color: String).void }
-              attr_writer :border_color
+              sig { params(text_decoration_color: String).void }
+              attr_writer :text_decoration_color
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_radius
-
-              sig { params(border_radius: String).void }
-              attr_writer :border_radius
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_style
-
-              sig { params(border_style: String).void }
-              attr_writer :border_style
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_width
-
-              sig { params(border_width: String).void }
-              attr_writer :border_width
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :box_shadow
-
-              sig { params(box_shadow: String).void }
-              attr_writer :box_shadow
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :color
-
-              sig { params(color: String).void }
-              attr_writer :color
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
-
-              sig { params(font_size: String).void }
-              attr_writer :font_size
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
-
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :padding
-
-              sig { params(padding: String).void }
-              attr_writer :padding
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :text_decoration
-
-              sig { params(text_decoration: String).void }
-              attr_writer :text_decoration
-
-              # Primary button style
               sig do
                 params(
                   background_color: String,
@@ -694,24 +682,45 @@ module BrandDev
                   border_width: String,
                   box_shadow: String,
                   color: String,
+                  css: String,
                   font_size: String,
                   font_weight: Float,
+                  min_height: String,
+                  min_width: String,
                   padding: String,
-                  text_decoration: String
+                  text_decoration: String,
+                  font_fallbacks: T::Array[String],
+                  font_family: String,
+                  text_decoration_color: String
                 ).returns(T.attached_class)
               end
               def self.new(
-                background_color: nil,
-                border_color: nil,
-                border_radius: nil,
-                border_style: nil,
-                border_width: nil,
-                box_shadow: nil,
-                color: nil,
-                font_size: nil,
-                font_weight: nil,
-                padding: nil,
-                text_decoration: nil
+                background_color:,
+                # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+                # alpha)
+                border_color:,
+                border_radius:,
+                border_style:,
+                border_width:,
+                # Computed box-shadow (comma-separated layers when present)
+                box_shadow:,
+                color:,
+                # Ready-to-use CSS declaration block for this component style
+                css:,
+                font_size:,
+                font_weight:,
+                # Sampled minimum height of the button box (typically px)
+                min_height:,
+                # Sampled minimum width of the button box (typically px)
+                min_width:,
+                padding:,
+                text_decoration:,
+                # Full ordered font list from computed font-family
+                font_fallbacks: nil,
+                # Primary button typeface (first in fontFallbacks)
+                font_family: nil,
+                # Hex color of the underline when it differs from the text color
+                text_decoration_color: nil
               )
               end
 
@@ -725,10 +734,16 @@ module BrandDev
                     border_width: String,
                     box_shadow: String,
                     color: String,
+                    css: String,
                     font_size: String,
                     font_weight: Float,
+                    min_height: String,
+                    min_width: String,
                     padding: String,
-                    text_decoration: String
+                    text_decoration: String,
+                    font_fallbacks: T::Array[String],
+                    font_family: String,
+                    text_decoration_color: String
                   }
                 )
               end
@@ -745,73 +760,75 @@ module BrandDev
                   )
                 end
 
+              sig { returns(String) }
+              attr_accessor :background_color
+
+              # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+              # alpha)
+              sig { returns(String) }
+              attr_accessor :border_color
+
+              sig { returns(String) }
+              attr_accessor :border_radius
+
+              sig { returns(String) }
+              attr_accessor :border_style
+
+              sig { returns(String) }
+              attr_accessor :border_width
+
+              # Computed box-shadow (comma-separated layers when present)
+              sig { returns(String) }
+              attr_accessor :box_shadow
+
+              sig { returns(String) }
+              attr_accessor :color
+
+              # Ready-to-use CSS declaration block for this component style
+              sig { returns(String) }
+              attr_accessor :css
+
+              sig { returns(String) }
+              attr_accessor :font_size
+
+              sig { returns(Float) }
+              attr_accessor :font_weight
+
+              # Sampled minimum height of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_height
+
+              # Sampled minimum width of the button box (typically px)
+              sig { returns(String) }
+              attr_accessor :min_width
+
+              sig { returns(String) }
+              attr_accessor :padding
+
+              sig { returns(String) }
+              attr_accessor :text_decoration
+
+              # Full ordered font list from computed font-family
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :font_fallbacks
+
+              sig { params(font_fallbacks: T::Array[String]).void }
+              attr_writer :font_fallbacks
+
+              # Primary button typeface (first in fontFallbacks)
               sig { returns(T.nilable(String)) }
-              attr_reader :background_color
+              attr_reader :font_family
 
-              sig { params(background_color: String).void }
-              attr_writer :background_color
+              sig { params(font_family: String).void }
+              attr_writer :font_family
 
+              # Hex color of the underline when it differs from the text color
               sig { returns(T.nilable(String)) }
-              attr_reader :border_color
+              attr_reader :text_decoration_color
 
-              sig { params(border_color: String).void }
-              attr_writer :border_color
+              sig { params(text_decoration_color: String).void }
+              attr_writer :text_decoration_color
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_radius
-
-              sig { params(border_radius: String).void }
-              attr_writer :border_radius
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_style
-
-              sig { params(border_style: String).void }
-              attr_writer :border_style
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :border_width
-
-              sig { params(border_width: String).void }
-              attr_writer :border_width
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :box_shadow
-
-              sig { params(box_shadow: String).void }
-              attr_writer :box_shadow
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :color
-
-              sig { params(color: String).void }
-              attr_writer :color
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
-
-              sig { params(font_size: String).void }
-              attr_writer :font_size
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
-
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :padding
-
-              sig { params(padding: String).void }
-              attr_writer :padding
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :text_decoration
-
-              sig { params(text_decoration: String).void }
-              attr_writer :text_decoration
-
-              # Secondary button style
               sig do
                 params(
                   background_color: String,
@@ -821,24 +838,45 @@ module BrandDev
                   border_width: String,
                   box_shadow: String,
                   color: String,
+                  css: String,
                   font_size: String,
                   font_weight: Float,
+                  min_height: String,
+                  min_width: String,
                   padding: String,
-                  text_decoration: String
+                  text_decoration: String,
+                  font_fallbacks: T::Array[String],
+                  font_family: String,
+                  text_decoration_color: String
                 ).returns(T.attached_class)
               end
               def self.new(
-                background_color: nil,
-                border_color: nil,
-                border_radius: nil,
-                border_style: nil,
-                border_width: nil,
-                box_shadow: nil,
-                color: nil,
-                font_size: nil,
-                font_weight: nil,
-                padding: nil,
-                text_decoration: nil
+                background_color:,
+                # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+                # alpha)
+                border_color:,
+                border_radius:,
+                border_style:,
+                border_width:,
+                # Computed box-shadow (comma-separated layers when present)
+                box_shadow:,
+                color:,
+                # Ready-to-use CSS declaration block for this component style
+                css:,
+                font_size:,
+                font_weight:,
+                # Sampled minimum height of the button box (typically px)
+                min_height:,
+                # Sampled minimum width of the button box (typically px)
+                min_width:,
+                padding:,
+                text_decoration:,
+                # Full ordered font list from computed font-family
+                font_fallbacks: nil,
+                # Primary button typeface (first in fontFallbacks)
+                font_family: nil,
+                # Hex color of the underline when it differs from the text color
+                text_decoration_color: nil
               )
               end
 
@@ -852,10 +890,16 @@ module BrandDev
                     border_width: String,
                     box_shadow: String,
                     color: String,
+                    css: String,
                     font_size: String,
                     font_weight: Float,
+                    min_height: String,
+                    min_width: String,
                     padding: String,
-                    text_decoration: String
+                    text_decoration: String,
+                    font_fallbacks: T::Array[String],
+                    font_family: String,
+                    text_decoration_color: String
                   }
                 )
               end
@@ -873,53 +917,35 @@ module BrandDev
                 )
               end
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :background_color
+            sig { returns(String) }
+            attr_accessor :background_color
 
-            sig { params(background_color: String).void }
-            attr_writer :background_color
+            # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+            # alpha)
+            sig { returns(String) }
+            attr_accessor :border_color
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :border_color
+            sig { returns(String) }
+            attr_accessor :border_radius
 
-            sig { params(border_color: String).void }
-            attr_writer :border_color
+            sig { returns(String) }
+            attr_accessor :border_style
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :border_radius
+            sig { returns(String) }
+            attr_accessor :border_width
 
-            sig { params(border_radius: String).void }
-            attr_writer :border_radius
+            sig { returns(String) }
+            attr_accessor :box_shadow
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :border_style
+            # Ready-to-use CSS declaration block for this component style
+            sig { returns(String) }
+            attr_accessor :css
 
-            sig { params(border_style: String).void }
-            attr_writer :border_style
+            sig { returns(String) }
+            attr_accessor :padding
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :border_width
-
-            sig { params(border_width: String).void }
-            attr_writer :border_width
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :box_shadow
-
-            sig { params(box_shadow: String).void }
-            attr_writer :box_shadow
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :padding
-
-            sig { params(padding: String).void }
-            attr_writer :padding
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :text_color
-
-            sig { params(text_color: String).void }
-            attr_writer :text_color
+            sig { returns(String) }
+            attr_accessor :text_color
 
             # Card component style
             sig do
@@ -930,19 +956,24 @@ module BrandDev
                 border_style: String,
                 border_width: String,
                 box_shadow: String,
+                css: String,
                 padding: String,
                 text_color: String
               ).returns(T.attached_class)
             end
             def self.new(
-              background_color: nil,
-              border_color: nil,
-              border_radius: nil,
-              border_style: nil,
-              border_width: nil,
-              box_shadow: nil,
-              padding: nil,
-              text_color: nil
+              background_color:,
+              # Border color as CSS hex (#RRGGBB or #RRGGBBAA when computed border-color has
+              # alpha)
+              border_color:,
+              border_radius:,
+              border_style:,
+              border_width:,
+              box_shadow:,
+              # Ready-to-use CSS declaration block for this component style
+              css:,
+              padding:,
+              text_color:
             )
             end
 
@@ -955,6 +986,7 @@ module BrandDev
                   border_style: String,
                   border_width: String,
                   box_shadow: String,
+                  css: String,
                   padding: String,
                   text_color: String
                 }
@@ -974,40 +1006,20 @@ module BrandDev
               )
             end
 
-          # Large spacing value
-          sig { returns(T.nilable(String)) }
-          attr_reader :lg
+          sig { returns(String) }
+          attr_accessor :lg
 
-          sig { params(lg: String).void }
-          attr_writer :lg
+          sig { returns(String) }
+          attr_accessor :md
 
-          # Medium spacing value
-          sig { returns(T.nilable(String)) }
-          attr_reader :md
+          sig { returns(String) }
+          attr_accessor :sm
 
-          sig { params(md: String).void }
-          attr_writer :md
+          sig { returns(String) }
+          attr_accessor :xl
 
-          # Small spacing value
-          sig { returns(T.nilable(String)) }
-          attr_reader :sm
-
-          sig { params(sm: String).void }
-          attr_writer :sm
-
-          # Extra large spacing value
-          sig { returns(T.nilable(String)) }
-          attr_reader :xl
-
-          sig { params(xl: String).void }
-          attr_writer :xl
-
-          # Extra small spacing value
-          sig { returns(T.nilable(String)) }
-          attr_reader :xs
-
-          sig { params(xs: String).void }
-          attr_writer :xs
+          sig { returns(String) }
+          attr_accessor :xs
 
           # Spacing system used on the website
           sig do
@@ -1019,18 +1031,7 @@ module BrandDev
               xs: String
             ).returns(T.attached_class)
           end
-          def self.new(
-            # Large spacing value
-            lg: nil,
-            # Medium spacing value
-            md: nil,
-            # Small spacing value
-            sm: nil,
-            # Extra large spacing value
-            xl: nil,
-            # Extra small spacing value
-            xs: nil
-          )
+          def self.new(lg:, md:, sm:, xl:, xs:)
           end
 
           sig do
@@ -1086,40 +1087,20 @@ module BrandDev
               )
             end
 
-          # Inner shadow value
-          sig { returns(T.nilable(String)) }
-          attr_reader :inner
+          sig { returns(String) }
+          attr_accessor :inner
 
-          sig { params(inner: String).void }
-          attr_writer :inner
+          sig { returns(String) }
+          attr_accessor :lg
 
-          # Large shadow value
-          sig { returns(T.nilable(String)) }
-          attr_reader :lg
+          sig { returns(String) }
+          attr_accessor :md
 
-          sig { params(lg: String).void }
-          attr_writer :lg
+          sig { returns(String) }
+          attr_accessor :sm
 
-          # Medium shadow value
-          sig { returns(T.nilable(String)) }
-          attr_reader :md
-
-          sig { params(md: String).void }
-          attr_writer :md
-
-          # Small shadow value
-          sig { returns(T.nilable(String)) }
-          attr_reader :sm
-
-          sig { params(sm: String).void }
-          attr_writer :sm
-
-          # Extra large shadow value
-          sig { returns(T.nilable(String)) }
-          attr_reader :xl
-
-          sig { params(xl: String).void }
-          attr_writer :xl
+          sig { returns(String) }
+          attr_accessor :xl
 
           # Shadow styles used on the website
           sig do
@@ -1131,18 +1112,7 @@ module BrandDev
               xl: String
             ).returns(T.attached_class)
           end
-          def self.new(
-            # Inner shadow value
-            inner: nil,
-            # Large shadow value
-            lg: nil,
-            # Medium shadow value
-            md: nil,
-            # Small shadow value
-            sm: nil,
-            # Extra large shadow value
-            xl: nil
-          )
+          def self.new(inner:, lg:, md:, sm:, xl:)
           end
 
           sig do
@@ -1166,9 +1136,7 @@ module BrandDev
           # Heading styles
           sig do
             returns(
-              T.nilable(
-                BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography::Headings
-              )
+              BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography::Headings
             )
           end
           attr_reader :headings
@@ -1181,7 +1149,6 @@ module BrandDev
           end
           attr_writer :headings
 
-          # Paragraph text styles
           sig do
             returns(
               T.nilable(
@@ -1210,8 +1177,7 @@ module BrandDev
           end
           def self.new(
             # Heading styles
-            headings: nil,
-            # Paragraph text styles
+            headings:,
             p_: nil
           )
           end
@@ -1348,38 +1314,29 @@ module BrandDev
                   )
                 end
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_family
+              # Full ordered font list from resolved computed font-family
+              sig { returns(T::Array[String]) }
+              attr_accessor :font_fallbacks
 
-              sig { params(font_family: String).void }
-              attr_writer :font_family
+              # Primary face (first family in the computed stack)
+              sig { returns(String) }
+              attr_accessor :font_family
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
+              sig { returns(String) }
+              attr_accessor :font_size
 
-              sig { params(font_size: String).void }
-              attr_writer :font_size
+              sig { returns(Float) }
+              attr_accessor :font_weight
 
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
+              sig { returns(String) }
+              attr_accessor :letter_spacing
 
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :letter_spacing
-
-              sig { params(letter_spacing: String).void }
-              attr_writer :letter_spacing
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :line_height
-
-              sig { params(line_height: String).void }
-              attr_writer :line_height
+              sig { returns(String) }
+              attr_accessor :line_height
 
               sig do
                 params(
+                  font_fallbacks: T::Array[String],
                   font_family: String,
                   font_size: String,
                   font_weight: Float,
@@ -1388,17 +1345,21 @@ module BrandDev
                 ).returns(T.attached_class)
               end
               def self.new(
-                font_family: nil,
-                font_size: nil,
-                font_weight: nil,
-                letter_spacing: nil,
-                line_height: nil
+                # Full ordered font list from resolved computed font-family
+                font_fallbacks:,
+                # Primary face (first family in the computed stack)
+                font_family:,
+                font_size:,
+                font_weight:,
+                letter_spacing:,
+                line_height:
               )
               end
 
               sig do
                 override.returns(
                   {
+                    font_fallbacks: T::Array[String],
                     font_family: String,
                     font_size: String,
                     font_weight: Float,
@@ -1420,38 +1381,29 @@ module BrandDev
                   )
                 end
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_family
+              # Full ordered font list from resolved computed font-family
+              sig { returns(T::Array[String]) }
+              attr_accessor :font_fallbacks
 
-              sig { params(font_family: String).void }
-              attr_writer :font_family
+              # Primary face (first family in the computed stack)
+              sig { returns(String) }
+              attr_accessor :font_family
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
+              sig { returns(String) }
+              attr_accessor :font_size
 
-              sig { params(font_size: String).void }
-              attr_writer :font_size
+              sig { returns(Float) }
+              attr_accessor :font_weight
 
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
+              sig { returns(String) }
+              attr_accessor :letter_spacing
 
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :letter_spacing
-
-              sig { params(letter_spacing: String).void }
-              attr_writer :letter_spacing
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :line_height
-
-              sig { params(line_height: String).void }
-              attr_writer :line_height
+              sig { returns(String) }
+              attr_accessor :line_height
 
               sig do
                 params(
+                  font_fallbacks: T::Array[String],
                   font_family: String,
                   font_size: String,
                   font_weight: Float,
@@ -1460,17 +1412,21 @@ module BrandDev
                 ).returns(T.attached_class)
               end
               def self.new(
-                font_family: nil,
-                font_size: nil,
-                font_weight: nil,
-                letter_spacing: nil,
-                line_height: nil
+                # Full ordered font list from resolved computed font-family
+                font_fallbacks:,
+                # Primary face (first family in the computed stack)
+                font_family:,
+                font_size:,
+                font_weight:,
+                letter_spacing:,
+                line_height:
               )
               end
 
               sig do
                 override.returns(
                   {
+                    font_fallbacks: T::Array[String],
                     font_family: String,
                     font_size: String,
                     font_weight: Float,
@@ -1492,38 +1448,29 @@ module BrandDev
                   )
                 end
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_family
+              # Full ordered font list from resolved computed font-family
+              sig { returns(T::Array[String]) }
+              attr_accessor :font_fallbacks
 
-              sig { params(font_family: String).void }
-              attr_writer :font_family
+              # Primary face (first family in the computed stack)
+              sig { returns(String) }
+              attr_accessor :font_family
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
+              sig { returns(String) }
+              attr_accessor :font_size
 
-              sig { params(font_size: String).void }
-              attr_writer :font_size
+              sig { returns(Float) }
+              attr_accessor :font_weight
 
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
+              sig { returns(String) }
+              attr_accessor :letter_spacing
 
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :letter_spacing
-
-              sig { params(letter_spacing: String).void }
-              attr_writer :letter_spacing
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :line_height
-
-              sig { params(line_height: String).void }
-              attr_writer :line_height
+              sig { returns(String) }
+              attr_accessor :line_height
 
               sig do
                 params(
+                  font_fallbacks: T::Array[String],
                   font_family: String,
                   font_size: String,
                   font_weight: Float,
@@ -1532,17 +1479,21 @@ module BrandDev
                 ).returns(T.attached_class)
               end
               def self.new(
-                font_family: nil,
-                font_size: nil,
-                font_weight: nil,
-                letter_spacing: nil,
-                line_height: nil
+                # Full ordered font list from resolved computed font-family
+                font_fallbacks:,
+                # Primary face (first family in the computed stack)
+                font_family:,
+                font_size:,
+                font_weight:,
+                letter_spacing:,
+                line_height:
               )
               end
 
               sig do
                 override.returns(
                   {
+                    font_fallbacks: T::Array[String],
                     font_family: String,
                     font_size: String,
                     font_weight: Float,
@@ -1564,38 +1515,29 @@ module BrandDev
                   )
                 end
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_family
+              # Full ordered font list from resolved computed font-family
+              sig { returns(T::Array[String]) }
+              attr_accessor :font_fallbacks
 
-              sig { params(font_family: String).void }
-              attr_writer :font_family
+              # Primary face (first family in the computed stack)
+              sig { returns(String) }
+              attr_accessor :font_family
 
-              sig { returns(T.nilable(String)) }
-              attr_reader :font_size
+              sig { returns(String) }
+              attr_accessor :font_size
 
-              sig { params(font_size: String).void }
-              attr_writer :font_size
+              sig { returns(Float) }
+              attr_accessor :font_weight
 
-              sig { returns(T.nilable(Float)) }
-              attr_reader :font_weight
+              sig { returns(String) }
+              attr_accessor :letter_spacing
 
-              sig { params(font_weight: Float).void }
-              attr_writer :font_weight
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :letter_spacing
-
-              sig { params(letter_spacing: String).void }
-              attr_writer :letter_spacing
-
-              sig { returns(T.nilable(String)) }
-              attr_reader :line_height
-
-              sig { params(line_height: String).void }
-              attr_writer :line_height
+              sig { returns(String) }
+              attr_accessor :line_height
 
               sig do
                 params(
+                  font_fallbacks: T::Array[String],
                   font_family: String,
                   font_size: String,
                   font_weight: Float,
@@ -1604,17 +1546,21 @@ module BrandDev
                 ).returns(T.attached_class)
               end
               def self.new(
-                font_family: nil,
-                font_size: nil,
-                font_weight: nil,
-                letter_spacing: nil,
-                line_height: nil
+                # Full ordered font list from resolved computed font-family
+                font_fallbacks:,
+                # Primary face (first family in the computed stack)
+                font_family:,
+                font_size:,
+                font_weight:,
+                letter_spacing:,
+                line_height:
               )
               end
 
               sig do
                 override.returns(
                   {
+                    font_fallbacks: T::Array[String],
                     font_family: String,
                     font_size: String,
                     font_weight: Float,
@@ -1637,39 +1583,29 @@ module BrandDev
                 )
               end
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :font_family
+            # Full ordered font list from resolved computed font-family
+            sig { returns(T::Array[String]) }
+            attr_accessor :font_fallbacks
 
-            sig { params(font_family: String).void }
-            attr_writer :font_family
+            # Primary face (first family in the computed stack)
+            sig { returns(String) }
+            attr_accessor :font_family
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :font_size
+            sig { returns(String) }
+            attr_accessor :font_size
 
-            sig { params(font_size: String).void }
-            attr_writer :font_size
+            sig { returns(Float) }
+            attr_accessor :font_weight
 
-            sig { returns(T.nilable(Float)) }
-            attr_reader :font_weight
+            sig { returns(String) }
+            attr_accessor :letter_spacing
 
-            sig { params(font_weight: Float).void }
-            attr_writer :font_weight
+            sig { returns(String) }
+            attr_accessor :line_height
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :letter_spacing
-
-            sig { params(letter_spacing: String).void }
-            attr_writer :letter_spacing
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :line_height
-
-            sig { params(line_height: String).void }
-            attr_writer :line_height
-
-            # Paragraph text styles
             sig do
               params(
+                font_fallbacks: T::Array[String],
                 font_family: String,
                 font_size: String,
                 font_weight: Float,
@@ -1678,17 +1614,21 @@ module BrandDev
               ).returns(T.attached_class)
             end
             def self.new(
-              font_family: nil,
-              font_size: nil,
-              font_weight: nil,
-              letter_spacing: nil,
-              line_height: nil
+              # Full ordered font list from resolved computed font-family
+              font_fallbacks:,
+              # Primary face (first family in the computed stack)
+              font_family:,
+              font_size:,
+              font_weight:,
+              letter_spacing:,
+              line_height:
             )
             end
 
             sig do
               override.returns(
                 {
+                  font_fallbacks: T::Array[String],
                   font_family: String,
                   font_size: String,
                   font_weight: Float,
