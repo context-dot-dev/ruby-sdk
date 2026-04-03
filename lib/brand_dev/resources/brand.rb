@@ -503,13 +503,11 @@ module BrandDev
       # Either 'domain' or 'directUrl' must be provided as a query parameter, but not
       # both.
       #
-      # @overload styleguide(direct_url: nil, domain: nil, prioritize: nil, timeout_ms: nil, request_options: {})
+      # @overload styleguide(direct_url: nil, domain: nil, timeout_ms: nil, request_options: {})
       #
       # @param direct_url [String] A specific URL to fetch the styleguide from directly, bypassing domain resolutio
       #
       # @param domain [String] Domain name to extract styleguide from (e.g., 'example.com', 'google.com'). The
-      #
-      # @param prioritize [Symbol, BrandDev::Models::BrandStyleguideParams::Prioritize] Optional parameter to prioritize screenshot capture for styleguide extraction. I
       #
       # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
       #

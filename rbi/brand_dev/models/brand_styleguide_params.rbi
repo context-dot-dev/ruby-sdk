@@ -27,24 +27,6 @@ module BrandDev
       sig { params(domain: String).void }
       attr_writer :domain
 
-      # Optional parameter to prioritize screenshot capture for styleguide extraction.
-      # If 'speed', optimizes for faster capture with basic quality. If 'quality',
-      # optimizes for higher quality with longer wait times. Defaults to 'quality' if
-      # not provided.
-      sig do
-        returns(
-          T.nilable(BrandDev::BrandStyleguideParams::Prioritize::OrSymbol)
-        )
-      end
-      attr_reader :prioritize
-
-      sig do
-        params(
-          prioritize: BrandDev::BrandStyleguideParams::Prioritize::OrSymbol
-        ).void
-      end
-      attr_writer :prioritize
-
       # Optional timeout in milliseconds for the request. If the request takes longer
       # than this value, it will be aborted with a 408 status code. Maximum allowed
       # value is 300000ms (5 minutes).
@@ -58,7 +40,6 @@ module BrandDev
         params(
           direct_url: String,
           domain: String,
-          prioritize: BrandDev::BrandStyleguideParams::Prioritize::OrSymbol,
           timeout_ms: Integer,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -70,11 +51,6 @@ module BrandDev
         # Domain name to extract styleguide from (e.g., 'example.com', 'google.com'). The
         # domain will be automatically normalized and validated.
         domain: nil,
-        # Optional parameter to prioritize screenshot capture for styleguide extraction.
-        # If 'speed', optimizes for faster capture with basic quality. If 'quality',
-        # optimizes for higher quality with longer wait times. Defaults to 'quality' if
-        # not provided.
-        prioritize: nil,
         # Optional timeout in milliseconds for the request. If the request takes longer
         # than this value, it will be aborted with a 408 status code. Maximum allowed
         # value is 300000ms (5 minutes).
@@ -88,46 +64,12 @@ module BrandDev
           {
             direct_url: String,
             domain: String,
-            prioritize: BrandDev::BrandStyleguideParams::Prioritize::OrSymbol,
             timeout_ms: Integer,
             request_options: BrandDev::RequestOptions
           }
         )
       end
       def to_hash
-      end
-
-      # Optional parameter to prioritize screenshot capture for styleguide extraction.
-      # If 'speed', optimizes for faster capture with basic quality. If 'quality',
-      # optimizes for higher quality with longer wait times. Defaults to 'quality' if
-      # not provided.
-      module Prioritize
-        extend BrandDev::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, BrandDev::BrandStyleguideParams::Prioritize)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        SPEED =
-          T.let(
-            :speed,
-            BrandDev::BrandStyleguideParams::Prioritize::TaggedSymbol
-          )
-        QUALITY =
-          T.let(
-            :quality,
-            BrandDev::BrandStyleguideParams::Prioritize::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[BrandDev::BrandStyleguideParams::Prioritize::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
     end
   end
