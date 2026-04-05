@@ -19,8 +19,7 @@ module BrandDev
         # Domain name to retrieve brand data for (e.g., 'example.com', 'google.com').
         # Cannot be used with name or ticker parameters.
         domain:,
-        # Optional parameter to force the language of the retrieved brand data. Works with
-        # all three lookup methods.
+        # Optional parameter to force the language of the retrieved brand data.
         force_language: nil,
         # Optional parameter to optimize the API call for maximum speed. When set to true,
         # the API will skip time-consuming operations for faster response at the cost of

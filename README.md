@@ -206,11 +206,11 @@ brand_dev.brand.retrieve(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :albanian
-puts(BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN)
+# :afrikaans
+puts(BrandDev::BrandRetrieveParams::ForceLanguage::AFRIKAANS)
 
 # Revealed type: `T.all(BrandDev::BrandRetrieveParams::ForceLanguage, Symbol)`
-T.reveal_type(BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN)
+T.reveal_type(BrandDev::BrandRetrieveParams::ForceLanguage::AFRIKAANS)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
@@ -218,13 +218,13 @@ Enum parameters have a "relaxed" type, so you can either pass in enum constants 
 ```ruby
 # Using the enum constants preserves the tagged type information:
 brand_dev.brand.retrieve(
-  force_language: BrandDev::BrandRetrieveParams::ForceLanguage::ALBANIAN,
+  force_language: BrandDev::BrandRetrieveParams::ForceLanguage::AFRIKAANS,
   # …
 )
 
 # Literal values are also permissible:
 brand_dev.brand.retrieve(
-  force_language: :albanian,
+  force_language: :afrikaans,
   # …
 )
 ```
