@@ -108,7 +108,8 @@ module BrandDev
       ) -> BrandDev::Models::BrandRetrieveSimplifiedResponse
 
       def screenshot: (
-        domain: String,
+        ?direct_url: String,
+        ?domain: String,
         ?full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot,
         ?page: BrandDev::Models::BrandScreenshotParams::page,
         ?prioritize: BrandDev::Models::BrandScreenshotParams::prioritize,

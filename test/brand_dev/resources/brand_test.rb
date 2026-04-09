@@ -267,10 +267,10 @@ class BrandDev::Test::Resources::BrandTest < BrandDev::Test::ResourceTest
     end
   end
 
-  def test_screenshot_required_params
+  def test_screenshot
     skip("Mock server tests are disabled")
 
-    response = @brand_dev.brand.screenshot(domain: "domain")
+    response = @brand_dev.brand.screenshot
 
     assert_pattern do
       response => BrandDev::Models::BrandScreenshotResponse

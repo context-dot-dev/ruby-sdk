@@ -465,10 +465,13 @@ module BrandDev
       #
       # Capture a screenshot of a website. Supports both viewport (standard browser
       # view) and full-page screenshots. Can also screenshot specific page types (login,
-      # pricing, etc.) by using heuristics to find the appropriate URL. Returns a URL to
-      # the uploaded screenshot image hosted on our CDN.
+      # pricing, etc.) by using heuristics to find the appropriate URL. Either 'domain'
+      # or 'directUrl' must be provided as a query parameter, but not both. Returns a
+      # URL to the uploaded screenshot image hosted on our CDN.
       #
-      # @overload screenshot(domain:, full_screenshot: nil, page: nil, prioritize: nil, request_options: {})
+      # @overload screenshot(direct_url: nil, domain: nil, full_screenshot: nil, page: nil, prioritize: nil, request_options: {})
+      #
+      # @param direct_url [String] A specific URL to screenshot directly, bypassing domain resolution (e.g., 'https
       #
       # @param domain [String] Domain name to take screenshot of (e.g., 'example.com', 'google.com'). The domai
       #
@@ -483,13 +486,13 @@ module BrandDev
       # @return [BrandDev::Models::BrandScreenshotResponse]
       #
       # @see BrandDev::Models::BrandScreenshotParams
-      def screenshot(params)
+      def screenshot(params = {})
         parsed, options = BrandDev::BrandScreenshotParams.dump_request(params)
         query = BrandDev::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "brand/screenshot",
-          query: query.transform_keys(full_screenshot: "fullScreenshot"),
+          query: query.transform_keys(direct_url: "directUrl", full_screenshot: "fullScreenshot"),
           model: BrandDev::Models::BrandScreenshotResponse,
           options: options
         )
