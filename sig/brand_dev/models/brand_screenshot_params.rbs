@@ -2,6 +2,7 @@ module BrandDev
   module Models
     type brand_screenshot_params =
       {
+        direct_url: String,
         domain: String,
         full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot,
         page: BrandDev::Models::BrandScreenshotParams::page,
@@ -13,7 +14,13 @@ module BrandDev
       extend BrandDev::Internal::Type::RequestParameters::Converter
       include BrandDev::Internal::Type::RequestParameters
 
-      attr_accessor domain: String
+      attr_reader direct_url: String?
+
+      def direct_url=: (String) -> String
+
+      attr_reader domain: String?
+
+      def domain=: (String) -> String
 
       attr_reader full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot?
 
@@ -34,7 +41,8 @@ module BrandDev
       ) -> BrandDev::Models::BrandScreenshotParams::prioritize
 
       def initialize: (
-        domain: String,
+        ?direct_url: String,
+        ?domain: String,
         ?full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot,
         ?page: BrandDev::Models::BrandScreenshotParams::page,
         ?prioritize: BrandDev::Models::BrandScreenshotParams::prioritize,
@@ -42,6 +50,7 @@ module BrandDev
       ) -> void
 
       def to_hash: -> {
+        direct_url: String,
         domain: String,
         full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot,
         page: BrandDev::Models::BrandScreenshotParams::page,

@@ -11,10 +11,22 @@ module BrandDev
           T.any(BrandDev::BrandScreenshotParams, BrandDev::Internal::AnyHash)
         end
 
+      # A specific URL to screenshot directly, bypassing domain resolution (e.g.,
+      # 'https://example.com/pricing'). When provided, the screenshot is taken of this
+      # exact URL.
+      sig { returns(T.nilable(String)) }
+      attr_reader :direct_url
+
+      sig { params(direct_url: String).void }
+      attr_writer :direct_url
+
       # Domain name to take screenshot of (e.g., 'example.com', 'google.com'). The
       # domain will be automatically normalized and validated.
-      sig { returns(String) }
-      attr_accessor :domain
+      sig { returns(T.nilable(String)) }
+      attr_reader :domain
+
+      sig { params(domain: String).void }
+      attr_writer :domain
 
       # Optional parameter to determine screenshot type. If 'true', takes a full page
       # screenshot capturing all content. If 'false' or not provided, takes a viewport
@@ -37,7 +49,8 @@ module BrandDev
       # Optional parameter to specify which page type to screenshot. If provided, the
       # system will scrape the domain's links and use heuristics to find the most
       # appropriate URL for the specified page type (30 supported languages). If not
-      # provided, screenshots the main domain landing page.
+      # provided, screenshots the main domain landing page. Only applicable when using
+      # 'domain', not 'directUrl'.
       sig do
         returns(T.nilable(BrandDev::BrandScreenshotParams::Page::OrSymbol))
       end
@@ -65,6 +78,7 @@ module BrandDev
 
       sig do
         params(
+          direct_url: String,
           domain: String,
           full_screenshot:
             BrandDev::BrandScreenshotParams::FullScreenshot::OrSymbol,
@@ -74,9 +88,13 @@ module BrandDev
         ).returns(T.attached_class)
       end
       def self.new(
+        # A specific URL to screenshot directly, bypassing domain resolution (e.g.,
+        # 'https://example.com/pricing'). When provided, the screenshot is taken of this
+        # exact URL.
+        direct_url: nil,
         # Domain name to take screenshot of (e.g., 'example.com', 'google.com'). The
         # domain will be automatically normalized and validated.
-        domain:,
+        domain: nil,
         # Optional parameter to determine screenshot type. If 'true', takes a full page
         # screenshot capturing all content. If 'false' or not provided, takes a viewport
         # screenshot (standard browser view).
@@ -84,7 +102,8 @@ module BrandDev
         # Optional parameter to specify which page type to screenshot. If provided, the
         # system will scrape the domain's links and use heuristics to find the most
         # appropriate URL for the specified page type (30 supported languages). If not
-        # provided, screenshots the main domain landing page.
+        # provided, screenshots the main domain landing page. Only applicable when using
+        # 'domain', not 'directUrl'.
         page: nil,
         # Optional parameter to prioritize screenshot capture. If 'speed', optimizes for
         # faster capture with basic quality. If 'quality', optimizes for higher quality
@@ -97,6 +116,7 @@ module BrandDev
       sig do
         override.returns(
           {
+            direct_url: String,
             domain: String,
             full_screenshot:
               BrandDev::BrandScreenshotParams::FullScreenshot::OrSymbol,
@@ -146,7 +166,8 @@ module BrandDev
       # Optional parameter to specify which page type to screenshot. If provided, the
       # system will scrape the domain's links and use heuristics to find the most
       # appropriate URL for the specified page type (30 supported languages). If not
-      # provided, screenshots the main domain landing page.
+      # provided, screenshots the main domain landing page. Only applicable when using
+      # 'domain', not 'directUrl'.
       module Page
         extend BrandDev::Internal::Type::Enum
 
