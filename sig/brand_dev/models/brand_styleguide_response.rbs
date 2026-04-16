@@ -46,6 +46,7 @@ module BrandDev
           colors: BrandDev::Models::BrandStyleguideResponse::Styleguide::Colors,
           components: BrandDev::Models::BrandStyleguideResponse::Styleguide::Components,
           element_spacing: BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing,
+          font_links: ::Hash[Symbol, BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink],
           mode: BrandDev::Models::BrandStyleguideResponse::Styleguide::mode,
           shadows: BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows,
           typography: BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography
@@ -58,6 +59,8 @@ module BrandDev
 
         attr_accessor element_spacing: BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing
 
+        attr_accessor font_links: ::Hash[Symbol, BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink]
+
         attr_accessor mode: BrandDev::Models::BrandStyleguideResponse::Styleguide::mode
 
         attr_accessor shadows: BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows
@@ -68,6 +71,7 @@ module BrandDev
           colors: BrandDev::Models::BrandStyleguideResponse::Styleguide::Colors,
           components: BrandDev::Models::BrandStyleguideResponse::Styleguide::Components,
           element_spacing: BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing,
+          font_links: ::Hash[Symbol, BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink],
           mode: BrandDev::Models::BrandStyleguideResponse::Styleguide::mode,
           shadows: BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows,
           typography: BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography
@@ -77,6 +81,7 @@ module BrandDev
           colors: BrandDev::Models::BrandStyleguideResponse::Styleguide::Colors,
           components: BrandDev::Models::BrandStyleguideResponse::Styleguide::Components,
           element_spacing: BrandDev::Models::BrandStyleguideResponse::Styleguide::ElementSpacing,
+          font_links: ::Hash[Symbol, BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink],
           mode: BrandDev::Models::BrandStyleguideResponse::Styleguide::mode,
           shadows: BrandDev::Models::BrandStyleguideResponse::Styleguide::Shadows,
           typography: BrandDev::Models::BrandStyleguideResponse::Styleguide::Typography
@@ -560,6 +565,53 @@ module BrandDev
             xl: String,
             xs: String
           }
+        end
+
+        type font_link =
+          {
+            files: ::Hash[Symbol, String],
+            type: BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink::type_,
+            category: String,
+            display_name: String
+          }
+
+        class FontLink < BrandDev::Internal::Type::BaseModel
+          attr_accessor files: ::Hash[Symbol, String]
+
+          attr_accessor type: BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink::type_
+
+          attr_reader category: String?
+
+          def category=: (String) -> String
+
+          attr_reader display_name: String?
+
+          def display_name=: (String) -> String
+
+          def initialize: (
+            files: ::Hash[Symbol, String],
+            type: BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink::type_,
+            ?category: String,
+            ?display_name: String
+          ) -> void
+
+          def to_hash: -> {
+            files: ::Hash[Symbol, String],
+            type: BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink::type_,
+            category: String,
+            display_name: String
+          }
+
+          type type_ = :google | :custom
+
+          module Type
+            extend BrandDev::Internal::Type::Enum
+
+            GOOGLE: :google
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[BrandDev::Models::BrandStyleguideResponse::Styleguide::FontLink::type_]
+          end
         end
 
         type mode = :light | :dark
