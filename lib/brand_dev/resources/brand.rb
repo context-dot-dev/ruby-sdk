@@ -432,39 +432,6 @@ module BrandDev
       end
 
       # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandStyleguideParams} for more details.
-      #
-      # Automatically extract comprehensive design system information from a brand's
-      # website including colors, typography, spacing, shadows, and UI components.
-      # Either 'domain' or 'directUrl' must be provided as a query parameter, but not
-      # both.
-      #
-      # @overload styleguide(direct_url: nil, domain: nil, timeout_ms: nil, request_options: {})
-      #
-      # @param direct_url [String] A specific URL to fetch the styleguide from directly, bypassing domain resolutio
-      #
-      # @param domain [String] Domain name to extract styleguide from (e.g., 'example.com', 'google.com'). The
-      #
-      # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandStyleguideResponse]
-      #
-      # @see BrandDev::Models::BrandStyleguideParams
-      def styleguide(params = {})
-        parsed, options = BrandDev::BrandStyleguideParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/styleguide",
-          query: query.transform_keys(direct_url: "directUrl", timeout_ms: "timeoutMS"),
-          model: BrandDev::Models::BrandStyleguideResponse,
-          options: options
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandWebScrapeHTMLParams} for more details.
       #
       # Scrapes the given URL and returns the raw HTML content of the page.

@@ -248,25 +248,6 @@ class BrandDev::Test::Resources::BrandTest < BrandDev::Test::ResourceTest
     end
   end
 
-  def test_styleguide
-    skip("Mock server tests are disabled")
-
-    response = @brand_dev.brand.styleguide
-
-    assert_pattern do
-      response => BrandDev::Models::BrandStyleguideResponse
-    end
-
-    assert_pattern do
-      response => {
-        code: Integer | nil,
-        domain: String | nil,
-        status: String | nil,
-        styleguide: BrandDev::Models::BrandStyleguideResponse::Styleguide | nil
-      }
-    end
-  end
-
   def test_web_scrape_html_required_params
     skip("Mock server tests are disabled")
 
