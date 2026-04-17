@@ -64,7 +64,6 @@ module BrandDev
 
       # When set to true, the API will perform an additional verification steps to
       # ensure the identified brand matches the transaction with high confidence.
-      # Defaults to false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :high_confidence_only
 
@@ -132,7 +131,6 @@ module BrandDev
         force_language: nil,
         # When set to true, the API will perform an additional verification steps to
         # ensure the identified brand matches the transaction with high confidence.
-        # Defaults to false.
         high_confidence_only: nil,
         # Optional parameter to optimize the API call for maximum speed. When set to true,
         # the API will skip time-consuming operations for faster response at the cost of

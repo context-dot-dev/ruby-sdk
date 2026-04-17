@@ -35,7 +35,6 @@ module BrandDev
       # @!attribute high_confidence_only
       #   When set to true, the API will perform an additional verification steps to
       #   ensure the identified brand matches the transaction with high confidence.
-      #   Defaults to false.
       #
       #   @return [Boolean, nil]
       optional :high_confidence_only, BrandDev::Internal::Type::Boolean

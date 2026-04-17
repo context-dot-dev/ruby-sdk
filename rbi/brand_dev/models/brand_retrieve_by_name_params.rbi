@@ -19,8 +19,8 @@ module BrandDev
       sig { returns(String) }
       attr_accessor :name
 
-      # Optional country code (GL parameter) to specify the country. This affects the
-      # geographic location used for search queries.
+      # Optional country code hint (GL parameter) to specify the country for the company
+      # name.
       sig do
         returns(
           T.nilable(BrandDev::BrandRetrieveByNameParams::CountryGl::OrSymbol)
@@ -86,8 +86,8 @@ module BrandDev
         # Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft
         # Corporation'). Must be 3-30 characters.
         name:,
-        # Optional country code (GL parameter) to specify the country. This affects the
-        # geographic location used for search queries.
+        # Optional country code hint (GL parameter) to specify the country for the company
+        # name.
         country_gl: nil,
         # Optional parameter to force the language of the retrieved brand data.
         force_language: nil,
@@ -120,8 +120,8 @@ module BrandDev
       def to_hash
       end
 
-      # Optional country code (GL parameter) to specify the country. This affects the
-      # geographic location used for search queries.
+      # Optional country code hint (GL parameter) to specify the country for the company
+      # name.
       module CountryGl
         extend BrandDev::Internal::Type::Enum
 
