@@ -122,35 +122,6 @@ module BrandDev
       end
 
       # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandFontsParams} for more details.
-      #
-      # Extract font information from a brand's website including font families, usage
-      # statistics, fallbacks, and element/word counts.
-      #
-      # @overload fonts(domain:, timeout_ms: nil, request_options: {})
-      #
-      # @param domain [String] Domain name to extract fonts from (e.g., 'example.com', 'google.com'). The domai
-      #
-      # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandFontsResponse]
-      #
-      # @see BrandDev::Models::BrandFontsParams
-      def fonts(params)
-        parsed, options = BrandDev::BrandFontsParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/fonts",
-          query: query.transform_keys(timeout_ms: "timeoutMS"),
-          model: BrandDev::Models::BrandFontsResponse,
-          options: options
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandIdentifyFromTransactionParams} for more details.
       #
       # Endpoint specially designed for platforms that want to identify transaction data
