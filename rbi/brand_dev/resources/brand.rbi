@@ -501,8 +501,7 @@ module BrandDev
       )
       end
 
-      # Scrapes the given URL, converts the HTML content to Markdown, and returns the
-      # result.
+      # Scrapes the given URL into LLM usable Markdown.
       sig do
         params(
           url: String,
@@ -515,7 +514,7 @@ module BrandDev
         ).returns(BrandDev::Models::BrandWebScrapeMdResponse)
       end
       def web_scrape_md(
-        # Full URL to scrape and convert to markdown (must include http:// or https://
+        # Full URL to scrape into LLM usable Markdown (must include http:// or https://
         # protocol)
         url:,
         # Include image references in Markdown output
@@ -524,7 +523,7 @@ module BrandDev
         include_links: nil,
         # Return a cached result if a prior scrape for the same parameters exists and is
         # younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
-        # omitted. Set to 0 to always scrape fresh.
+        # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
         max_age_ms: nil,
         # Shorten base64-encoded image data in the Markdown output
         shorten_base64_images: nil,

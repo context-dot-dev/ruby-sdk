@@ -587,12 +587,11 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandWebScrapeMdParams} for more details.
       #
-      # Scrapes the given URL, converts the HTML content to Markdown, and returns the
-      # result.
+      # Scrapes the given URL into LLM usable Markdown.
       #
       # @overload web_scrape_md(url:, include_images: nil, include_links: nil, max_age_ms: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #
-      # @param url [String] Full URL to scrape and convert to markdown (must include http:// or https:// pro
+      # @param url [String] Full URL to scrape into LLM usable Markdown (must include http:// or https:// pr
       #
       # @param include_images [Boolean] Include image references in Markdown output
       #
