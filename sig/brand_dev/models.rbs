@@ -25,8 +25,6 @@ module BrandDev
 
   class BrandRetrieveSimplifiedParams = BrandDev::Models::BrandRetrieveSimplifiedParams
 
-  class BrandStyleguideParams = BrandDev::Models::BrandStyleguideParams
-
   class BrandWebScrapeHTMLParams = BrandDev::Models::BrandWebScrapeHTMLParams
 
   class BrandWebScrapeImagesParams = BrandDev::Models::BrandWebScrapeImagesParams
