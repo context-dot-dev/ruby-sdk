@@ -26,6 +26,14 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :include_links, BrandDev::Internal::Type::Boolean
 
+      # @!attribute max_age_ms
+      #   Return a cached result if a prior scrape for the same parameters exists and is
+      #   younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
+      #   omitted. Set to 0 to always scrape fresh.
+      #
+      #   @return [Integer, nil]
+      optional :max_age_ms, Integer
+
       # @!attribute shorten_base64_images
       #   Shorten base64-encoded image data in the Markdown output
       #
@@ -39,7 +47,7 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :use_main_content_only, BrandDev::Internal::Type::Boolean
 
-      # @!method initialize(url:, include_images: nil, include_links: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @!method initialize(url:, include_images: nil, include_links: nil, max_age_ms: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {BrandDev::Models::BrandWebScrapeMdParams} for more details.
       #
@@ -48,6 +56,8 @@ module BrandDev
       #   @param include_images [Boolean] Include image references in Markdown output
       #
       #   @param include_links [Boolean] Preserve hyperlinks in Markdown output
+      #
+      #   @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
       #
       #   @param shorten_base64_images [Boolean] Shorten base64-encoded image data in the Markdown output
       #

@@ -531,11 +531,16 @@ module BrandDev
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {BrandDev::Models::BrandWebScrapeHTMLParams} for more details.
+      #
       # Scrapes the given URL and returns the raw HTML content of the page.
       #
-      # @overload web_scrape_html(url:, request_options: {})
+      # @overload web_scrape_html(url:, max_age_ms: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape (must include http:// or https:// protocol)
+      #
+      # @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
       #
       # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -548,7 +553,7 @@ module BrandDev
         @client.request(
           method: :get,
           path: "web/scrape/html",
-          query: query,
+          query: query.transform_keys(max_age_ms: "maxAgeMs"),
           model: BrandDev::Models::BrandWebScrapeHTMLResponse,
           options: options
         )
@@ -585,13 +590,15 @@ module BrandDev
       # Scrapes the given URL, converts the HTML content to Markdown, and returns the
       # result.
       #
-      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, max_age_ms: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape and convert to markdown (must include http:// or https:// pro
       #
       # @param include_images [Boolean] Include image references in Markdown output
       #
       # @param include_links [Boolean] Preserve hyperlinks in Markdown output
+      #
+      # @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
       #
       # @param shorten_base64_images [Boolean] Shorten base64-encoded image data in the Markdown output
       #
@@ -611,6 +618,7 @@ module BrandDev
           query: query.transform_keys(
             include_images: "includeImages",
             include_links: "includeLinks",
+            max_age_ms: "maxAgeMs",
             shorten_base64_images: "shortenBase64Images",
             use_main_content_only: "useMainContentOnly"
           ),

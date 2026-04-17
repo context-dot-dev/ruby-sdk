@@ -5,6 +5,7 @@ module BrandDev
         url: String,
         include_images: bool,
         include_links: bool,
+        max_age_ms: Integer,
         :shorten_base64_images => bool,
         use_main_content_only: bool
       }
@@ -24,6 +25,10 @@ module BrandDev
 
       def include_links=: (bool) -> bool
 
+      attr_reader max_age_ms: Integer?
+
+      def max_age_ms=: (Integer) -> Integer
+
       attr_reader shorten_base64_images: bool?
 
       def shorten_base64_images=: (bool) -> bool
@@ -36,6 +41,7 @@ module BrandDev
         url: String,
         ?include_images: bool,
         ?include_links: bool,
+        ?max_age_ms: Integer,
         ?shorten_base64_images: bool,
         ?use_main_content_only: bool,
         ?request_options: BrandDev::request_opts
@@ -45,6 +51,7 @@ module BrandDev
         url: String,
         include_images: bool,
         include_links: bool,
+        max_age_ms: Integer,
         :shorten_base64_images => bool,
         use_main_content_only: bool,
         request_options: BrandDev::RequestOptions

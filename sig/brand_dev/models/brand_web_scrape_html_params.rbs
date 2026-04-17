@@ -1,7 +1,8 @@
 module BrandDev
   module Models
     type brand_web_scrape_html_params =
-      { url: String } & BrandDev::Internal::Type::request_parameters
+      { url: String, max_age_ms: Integer }
+      & BrandDev::Internal::Type::request_parameters
 
     class BrandWebScrapeHTMLParams < BrandDev::Internal::Type::BaseModel
       extend BrandDev::Internal::Type::RequestParameters::Converter
@@ -9,12 +10,21 @@ module BrandDev
 
       attr_accessor url: String
 
+      attr_reader max_age_ms: Integer?
+
+      def max_age_ms=: (Integer) -> Integer
+
       def initialize: (
         url: String,
+        ?max_age_ms: Integer,
         ?request_options: BrandDev::request_opts
       ) -> void
 
-      def to_hash: -> { url: String, request_options: BrandDev::RequestOptions }
+      def to_hash: -> {
+        url: String,
+        max_age_ms: Integer,
+        request_options: BrandDev::RequestOptions
+      }
     end
   end
 end
