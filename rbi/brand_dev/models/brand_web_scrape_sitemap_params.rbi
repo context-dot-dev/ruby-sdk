@@ -14,8 +14,7 @@ module BrandDev
           )
         end
 
-      # Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be
-      # automatically normalized and validated.
+      # Domain to build a sitemap for
       sig { returns(String) }
       attr_accessor :domain
 
@@ -35,8 +34,7 @@ module BrandDev
         ).returns(T.attached_class)
       end
       def self.new(
-        # Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be
-        # automatically normalized and validated.
+        # Domain to build a sitemap for
         domain:,
         # Maximum number of links to return from the sitemap crawl. Defaults to 10,000.
         # Minimum is 1, maximum is 100,000.

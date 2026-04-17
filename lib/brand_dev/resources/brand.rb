@@ -629,13 +629,11 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandWebScrapeSitemapParams} for more details.
       #
-      # Crawls the sitemap of the given domain and returns all discovered page URLs.
-      # Supports sitemap index files (recursive), parallel fetching with concurrency
-      # control, deduplication, and filters out non-page resources (images, PDFs, etc.).
+      # Crawl an entire website's sitemap and return all discovered page URLs
       #
       # @overload web_scrape_sitemap(domain:, max_links: nil, request_options: {})
       #
-      # @param domain [String] Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be auto
+      # @param domain [String] Domain to build a sitemap for
       #
       # @param max_links [Integer] Maximum number of links to return from the sitemap crawl. Defaults to 10,000. Mi
       #
