@@ -20,13 +20,22 @@ module BrandDev
       #   @return [Integer, nil]
       optional :max_links, Integer
 
-      # @!method initialize(domain:, max_links: nil, request_options: {})
+      # @!attribute url_regex
+      #   Optional RE2-compatible regex pattern. Only URLs matching this pattern are
+      #   returned and counted against maxLinks.
+      #
+      #   @return [String, nil]
+      optional :url_regex, String
+
+      # @!method initialize(domain:, max_links: nil, url_regex: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {BrandDev::Models::BrandWebScrapeSitemapParams} for more details.
       #
       #   @param domain [String] Domain to build a sitemap for
       #
       #   @param max_links [Integer] Maximum number of links to return from the sitemap crawl. Defaults to 10,000. Mi
+      #
+      #   @param url_regex [String] Optional RE2-compatible regex pattern. Only URLs matching this pattern are retur
       #
       #   @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}]
     end

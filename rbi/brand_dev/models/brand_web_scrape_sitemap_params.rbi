@@ -26,10 +26,19 @@ module BrandDev
       sig { params(max_links: Integer).void }
       attr_writer :max_links
 
+      # Optional RE2-compatible regex pattern. Only URLs matching this pattern are
+      # returned and counted against maxLinks.
+      sig { returns(T.nilable(String)) }
+      attr_reader :url_regex
+
+      sig { params(url_regex: String).void }
+      attr_writer :url_regex
+
       sig do
         params(
           domain: String,
           max_links: Integer,
+          url_regex: String,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -39,6 +48,9 @@ module BrandDev
         # Maximum number of links to return from the sitemap crawl. Defaults to 10,000.
         # Minimum is 1, maximum is 100,000.
         max_links: nil,
+        # Optional RE2-compatible regex pattern. Only URLs matching this pattern are
+        # returned and counted against maxLinks.
+        url_regex: nil,
         request_options: {}
       )
       end
@@ -48,6 +60,7 @@ module BrandDev
           {
             domain: String,
             max_links: Integer,
+            url_regex: String,
             request_options: BrandDev::RequestOptions
           }
         )

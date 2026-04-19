@@ -416,6 +416,7 @@ module BrandDev
         params(
           domain: String,
           max_links: Integer,
+          url_regex: String,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandWebScrapeSitemapResponse)
       end
@@ -425,6 +426,9 @@ module BrandDev
         # Maximum number of links to return from the sitemap crawl. Defaults to 10,000.
         # Minimum is 1, maximum is 100,000.
         max_links: nil,
+        # Optional RE2-compatible regex pattern. Only URLs matching this pattern are
+        # returned and counted against maxLinks.
+        url_regex: nil,
         request_options: {}
       )
       end
