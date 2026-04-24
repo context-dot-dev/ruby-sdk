@@ -146,10 +146,7 @@ module BrandDev
         sig { returns(String) }
         attr_accessor :name
 
-        # Stock Keeping Unit (product identifier). Extracted from structured data (JSON-LD
-        # Product.sku), microdata, meta tags, platform-specific identifiers (e.g. Amazon
-        # ASIN, Etsy listing ID), or visible SKU/Model/Item # text. Null if no identifier
-        # is found.
+        # Stock Keeping Unit (product identifier). Null if no identifier is found.
         sig { returns(T.nilable(String)) }
         attr_accessor :sku
 
@@ -235,10 +232,7 @@ module BrandDev
           images:,
           # Name of the product
           name:,
-          # Stock Keeping Unit (product identifier). Extracted from structured data (JSON-LD
-          # Product.sku), microdata, meta tags, platform-specific identifiers (e.g. Amazon
-          # ASIN, Etsy listing ID), or visible SKU/Model/Item # text. Null if no identifier
-          # is found.
+          # Stock Keeping Unit (product identifier). Null if no identifier is found.
           sku:,
           # Tags associated with the product
           tags:,
