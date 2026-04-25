@@ -13,7 +13,7 @@ module BrandDev
       #
       # @param domain [String] Domain name to retrieve brand data for (e.g., 'example.com', 'google.com'). Cann
       #
-      # @param force_language [Symbol, BrandDev::Models::BrandRetrieveParams::ForceLanguage] Optional parameter to force the language of the retrieved brand data. Works with
+      # @param force_language [Symbol, BrandDev::Models::BrandRetrieveParams::ForceLanguage] Optional parameter to force the language of the retrieved brand data.
       #
       # @param max_speed [Boolean] Optional parameter to optimize the API call for maximum speed. When set to true,
       #
@@ -117,35 +117,6 @@ module BrandDev
           path: "brand/ai/query",
           body: parsed,
           model: BrandDev::Models::BrandAIQueryResponse,
-          options: options
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandFontsParams} for more details.
-      #
-      # Extract font information from a brand's website including font families, usage
-      # statistics, fallbacks, and element/word counts.
-      #
-      # @overload fonts(domain:, timeout_ms: nil, request_options: {})
-      #
-      # @param domain [String] Domain name to extract fonts from (e.g., 'example.com', 'google.com'). The domai
-      #
-      # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandFontsResponse]
-      #
-      # @see BrandDev::Models::BrandFontsParams
-      def fonts(params)
-        parsed, options = BrandDev::BrandFontsParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/fonts",
-          query: query.transform_keys(timeout_ms: "timeoutMS"),
-          model: BrandDev::Models::BrandFontsResponse,
           options: options
         )
       end
@@ -259,9 +230,8 @@ module BrandDev
       # {BrandDev::Models::BrandRetrieveByEmailParams} for more details.
       #
       # Retrieve brand information using an email address while detecting disposable and
-      # free email addresses. This endpoint extracts the domain from the email address
-      # and returns brand data for that domain. Disposable and free email addresses
-      # (like gmail.com, yahoo.com) will throw a 422 error.
+      # free email addresses. Disposable and free email addresses (like gmail.com,
+      # yahoo.com) will throw a 422 error.
       #
       # @overload retrieve_by_email(email:, force_language: nil, max_speed: nil, timeout_ms: nil, request_options: {})
       #
@@ -294,8 +264,7 @@ module BrandDev
       # {BrandDev::Models::BrandRetrieveByIsinParams} for more details.
       #
       # Retrieve brand information using an ISIN (International Securities
-      # Identification Number). This endpoint looks up the company associated with the
-      # ISIN and returns its brand data.
+      # Identification Number).
       #
       # @overload retrieve_by_isin(isin:, force_language: nil, max_speed: nil, timeout_ms: nil, request_options: {})
       #
@@ -327,14 +296,13 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandRetrieveByNameParams} for more details.
       #
-      # Retrieve brand information using a company name. This endpoint searches for the
-      # company by name and returns its brand data.
+      # Retrieve brand information using a company name.
       #
       # @overload retrieve_by_name(name:, country_gl: nil, force_language: nil, max_speed: nil, timeout_ms: nil, request_options: {})
       #
       # @param name [String] Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft Corporati
       #
-      # @param country_gl [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl] Optional country code (GL parameter) to specify the country. This affects the ge
+      # @param country_gl [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl] Optional country code hint (GL parameter) to specify the country for the company
       #
       # @param force_language [Symbol, BrandDev::Models::BrandRetrieveByNameParams::ForceLanguage] Optional parameter to force the language of the retrieved brand data.
       #
@@ -362,8 +330,7 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandRetrieveByTickerParams} for more details.
       #
-      # Retrieve brand information using a stock ticker symbol. This endpoint looks up
-      # the company associated with the ticker and returns its brand data.
+      # Retrieve brand information using a stock ticker symbol.
       #
       # @overload retrieve_by_ticker(ticker:, force_language: nil, max_speed: nil, ticker_exchange: nil, timeout_ms: nil, request_options: {})
       #
@@ -395,47 +362,11 @@ module BrandDev
       end
 
       # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandRetrieveNaicsParams} for more details.
-      #
-      # Endpoint to classify any brand into a 2022 NAICS code.
-      #
-      # @overload retrieve_naics(input:, max_results: nil, min_results: nil, timeout_ms: nil, request_options: {})
-      #
-      # @param input [String] Brand domain or title to retrieve NAICS code for. If a valid domain is provided
-      #
-      # @param max_results [Integer] Maximum number of NAICS codes to return. Must be between 1 and 10. Defaults to 5
-      #
-      # @param min_results [Integer] Minimum number of NAICS codes to return. Must be at least 1. Defaults to 1.
-      #
-      # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandRetrieveNaicsResponse]
-      #
-      # @see BrandDev::Models::BrandRetrieveNaicsParams
-      def retrieve_naics(params)
-        parsed, options = BrandDev::BrandRetrieveNaicsParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/naics",
-          query: query.transform_keys(
-            max_results: "maxResults",
-            min_results: "minResults",
-            timeout_ms: "timeoutMS"
-          ),
-          model: BrandDev::Models::BrandRetrieveNaicsResponse,
-          options: options
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandRetrieveSimplifiedParams} for more details.
       #
       # Returns a simplified version of brand data containing only essential
-      # information: domain, title, colors, logos, and backdrops. This endpoint is
-      # optimized for faster responses and reduced data transfer.
+      # information: domain, title, colors, logos, and backdrops. Optimized for faster
+      # responses and reduced data transfer.
       #
       # @overload retrieve_simplified(domain:, timeout_ms: nil, request_options: {})
       #
@@ -461,78 +392,17 @@ module BrandDev
       end
 
       # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandScreenshotParams} for more details.
+      # {BrandDev::Models::BrandWebScrapeHTMLParams} for more details.
       #
-      # Capture a screenshot of a website. Supports both viewport (standard browser
-      # view) and full-page screenshots. Can also screenshot specific page types (login,
-      # pricing, etc.) by using heuristics to find the appropriate URL. Returns a URL to
-      # the uploaded screenshot image hosted on our CDN.
-      #
-      # @overload screenshot(domain:, full_screenshot: nil, page: nil, prioritize: nil, request_options: {})
-      #
-      # @param domain [String] Domain name to take screenshot of (e.g., 'example.com', 'google.com'). The domai
-      #
-      # @param full_screenshot [Symbol, BrandDev::Models::BrandScreenshotParams::FullScreenshot] Optional parameter to determine screenshot type. If 'true', takes a full page sc
-      #
-      # @param page [Symbol, BrandDev::Models::BrandScreenshotParams::Page] Optional parameter to specify which page type to screenshot. If provided, the sy
-      #
-      # @param prioritize [Symbol, BrandDev::Models::BrandScreenshotParams::Prioritize] Optional parameter to prioritize screenshot capture. If 'speed', optimizes for f
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandScreenshotResponse]
-      #
-      # @see BrandDev::Models::BrandScreenshotParams
-      def screenshot(params)
-        parsed, options = BrandDev::BrandScreenshotParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/screenshot",
-          query: query.transform_keys(full_screenshot: "fullScreenshot"),
-          model: BrandDev::Models::BrandScreenshotResponse,
-          options: options
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
-      # {BrandDev::Models::BrandStyleguideParams} for more details.
-      #
-      # Automatically extract comprehensive design system information from a brand's
-      # website including colors, typography, spacing, shadows, and UI components.
-      # Either 'domain' or 'directUrl' must be provided as a query parameter, but not
-      # both.
-      #
-      # @overload styleguide(direct_url: nil, domain: nil, timeout_ms: nil, request_options: {})
-      #
-      # @param direct_url [String] A specific URL to fetch the styleguide from directly, bypassing domain resolutio
-      #
-      # @param domain [String] Domain name to extract styleguide from (e.g., 'example.com', 'google.com'). The
-      #
-      # @param timeout_ms [Integer] Optional timeout in milliseconds for the request. If the request takes longer th
-      #
-      # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [BrandDev::Models::BrandStyleguideResponse]
-      #
-      # @see BrandDev::Models::BrandStyleguideParams
-      def styleguide(params = {})
-        parsed, options = BrandDev::BrandStyleguideParams.dump_request(params)
-        query = BrandDev::Internal::Util.encode_query_params(parsed)
-        @client.request(
-          method: :get,
-          path: "brand/styleguide",
-          query: query.transform_keys(direct_url: "directUrl", timeout_ms: "timeoutMS"),
-          model: BrandDev::Models::BrandStyleguideResponse,
-          options: options
-        )
-      end
-
       # Scrapes the given URL and returns the raw HTML content of the page.
       #
-      # @overload web_scrape_html(url:, request_options: {})
+      # @overload web_scrape_html(url:, max_age_ms: nil, parse_pdf: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape (must include http:// or https:// protocol)
+      #
+      # @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
+      #
+      # @param parse_pdf [Boolean] When true (default), PDF URLs are fetched and their text layer is extracted and
       #
       # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -545,7 +415,7 @@ module BrandDev
         @client.request(
           method: :get,
           path: "web/scrape/html",
-          query: query,
+          query: query.transform_keys(max_age_ms: "maxAgeMs", parse_pdf: "parsePDF"),
           model: BrandDev::Models::BrandWebScrapeHTMLResponse,
           options: options
         )
@@ -579,16 +449,19 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandWebScrapeMdParams} for more details.
       #
-      # Scrapes the given URL, converts the HTML content to Markdown, and returns the
-      # result.
+      # Scrapes the given URL into LLM usable Markdown.
       #
-      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #
-      # @param url [String] Full URL to scrape and convert to markdown (must include http:// or https:// pro
+      # @param url [String] Full URL to scrape into LLM usable Markdown (must include http:// or https:// pr
       #
       # @param include_images [Boolean] Include image references in Markdown output
       #
       # @param include_links [Boolean] Preserve hyperlinks in Markdown output
+      #
+      # @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
+      #
+      # @param parse_pdf [Boolean] When true (default), PDF URLs are fetched and their text layer is extracted and
       #
       # @param shorten_base64_images [Boolean] Shorten base64-encoded image data in the Markdown output
       #
@@ -608,6 +481,8 @@ module BrandDev
           query: query.transform_keys(
             include_images: "includeImages",
             include_links: "includeLinks",
+            max_age_ms: "maxAgeMs",
+            parse_pdf: "parsePDF",
             shorten_base64_images: "shortenBase64Images",
             use_main_content_only: "useMainContentOnly"
           ),
@@ -619,15 +494,15 @@ module BrandDev
       # Some parameter documentations has been truncated, see
       # {BrandDev::Models::BrandWebScrapeSitemapParams} for more details.
       #
-      # Crawls the sitemap of the given domain and returns all discovered page URLs.
-      # Supports sitemap index files (recursive), parallel fetching with concurrency
-      # control, deduplication, and filters out non-page resources (images, PDFs, etc.).
+      # Crawl an entire website's sitemap and return all discovered page URLs.
       #
-      # @overload web_scrape_sitemap(domain:, max_links: nil, request_options: {})
+      # @overload web_scrape_sitemap(domain:, max_links: nil, url_regex: nil, request_options: {})
       #
-      # @param domain [String] Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be auto
+      # @param domain [String] Domain to build a sitemap for
       #
       # @param max_links [Integer] Maximum number of links to return from the sitemap crawl. Defaults to 10,000. Mi
+      #
+      # @param url_regex [String] Optional RE2-compatible regex pattern. Only URLs matching this pattern are retur
       #
       # @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -640,7 +515,7 @@ module BrandDev
         @client.request(
           method: :get,
           path: "web/scrape/sitemap",
-          query: query.transform_keys(max_links: "maxLinks"),
+          query: query.transform_keys(max_links: "maxLinks", url_regex: "urlRegex"),
           model: BrandDev::Models::BrandWebScrapeSitemapResponse,
           options: options
         )

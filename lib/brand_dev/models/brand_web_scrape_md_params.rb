@@ -8,7 +8,7 @@ module BrandDev
       include BrandDev::Internal::Type::RequestParameters
 
       # @!attribute url
-      #   Full URL to scrape and convert to markdown (must include http:// or https://
+      #   Full URL to scrape into LLM usable Markdown (must include http:// or https://
       #   protocol)
       #
       #   @return [String]
@@ -26,6 +26,22 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :include_links, BrandDev::Internal::Type::Boolean
 
+      # @!attribute max_age_ms
+      #   Return a cached result if a prior scrape for the same parameters exists and is
+      #   younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
+      #   omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
+      #
+      #   @return [Integer, nil]
+      optional :max_age_ms, Integer
+
+      # @!attribute parse_pdf
+      #   When true (default), PDF URLs are fetched and their text layer is extracted and
+      #   converted to Markdown. When false, PDF URLs are skipped and a 400
+      #   WEBSITE_ACCESS_ERROR is returned.
+      #
+      #   @return [Boolean, nil]
+      optional :parse_pdf, BrandDev::Internal::Type::Boolean
+
       # @!attribute shorten_base64_images
       #   Shorten base64-encoded image data in the Markdown output
       #
@@ -39,15 +55,19 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :use_main_content_only, BrandDev::Internal::Type::Boolean
 
-      # @!method initialize(url:, include_images: nil, include_links: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @!method initialize(url:, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {BrandDev::Models::BrandWebScrapeMdParams} for more details.
       #
-      #   @param url [String] Full URL to scrape and convert to markdown (must include http:// or https:// pro
+      #   @param url [String] Full URL to scrape into LLM usable Markdown (must include http:// or https:// pr
       #
       #   @param include_images [Boolean] Include image references in Markdown output
       #
       #   @param include_links [Boolean] Preserve hyperlinks in Markdown output
+      #
+      #   @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
+      #
+      #   @param parse_pdf [Boolean] When true (default), PDF URLs are fetched and their text layer is extracted and
       #
       #   @param shorten_base64_images [Boolean] Shorten base64-encoded image data in the Markdown output
       #

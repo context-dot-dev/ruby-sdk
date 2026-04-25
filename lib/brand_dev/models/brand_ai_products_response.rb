@@ -39,6 +39,12 @@ module BrandDev
         #   @return [String]
         required :name, String
 
+        # @!attribute sku
+        #   Stock Keeping Unit (product identifier). Null if no identifier is found.
+        #
+        #   @return [String, nil]
+        required :sku, String, nil?: true
+
         # @!attribute tags
         #   Tags associated with the product
         #
@@ -97,7 +103,7 @@ module BrandDev
         #   @return [String, nil]
         optional :url, String, nil?: true
 
-        # @!method initialize(description:, features:, images:, name:, tags:, target_audience:, billing_frequency: nil, category: nil, currency: nil, image_url: nil, price: nil, pricing_model: nil, url: nil)
+        # @!method initialize(description:, features:, images:, name:, sku:, tags:, target_audience:, billing_frequency: nil, category: nil, currency: nil, image_url: nil, price: nil, pricing_model: nil, url: nil)
         #   @param description [String] Description of the product
         #
         #   @param features [Array<String>] List of product features
@@ -105,6 +111,8 @@ module BrandDev
         #   @param images [Array<String>] URLs to product images on the page (up to 7)
         #
         #   @param name [String] Name of the product
+        #
+        #   @param sku [String, nil] Stock Keeping Unit (product identifier). Null if no identifier is found.
         #
         #   @param tags [Array<String>] Tags associated with the product
         #

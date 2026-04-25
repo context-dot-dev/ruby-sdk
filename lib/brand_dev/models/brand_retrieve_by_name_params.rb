@@ -15,8 +15,8 @@ module BrandDev
       required :name, String
 
       # @!attribute country_gl
-      #   Optional country code (GL parameter) to specify the country. This affects the
-      #   geographic location used for search queries.
+      #   Optional country code hint (GL parameter) to specify the country for the company
+      #   name.
       #
       #   @return [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl, nil]
       optional :country_gl, enum: -> { BrandDev::BrandRetrieveByNameParams::CountryGl }
@@ -49,7 +49,7 @@ module BrandDev
       #
       #   @param name [String] Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft Corporati
       #
-      #   @param country_gl [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl] Optional country code (GL parameter) to specify the country. This affects the ge
+      #   @param country_gl [Symbol, BrandDev::Models::BrandRetrieveByNameParams::CountryGl] Optional country code hint (GL parameter) to specify the country for the company
       #
       #   @param force_language [Symbol, BrandDev::Models::BrandRetrieveByNameParams::ForceLanguage] Optional parameter to force the language of the retrieved brand data.
       #
@@ -59,8 +59,8 @@ module BrandDev
       #
       #   @param request_options [BrandDev::RequestOptions, Hash{Symbol=>Object}]
 
-      # Optional country code (GL parameter) to specify the country. This affects the
-      # geographic location used for search queries.
+      # Optional country code hint (GL parameter) to specify the country for the company
+      # name.
       module CountryGl
         extend BrandDev::Internal::Type::Enum
 
@@ -312,61 +312,126 @@ module BrandDev
       module ForceLanguage
         extend BrandDev::Internal::Type::Enum
 
+        AFRIKAANS = :afrikaans
         ALBANIAN = :albanian
+        AMHARIC = :amharic
         ARABIC = :arabic
+        ARMENIAN = :armenian
+        ASSAMESE = :assamese
+        AYMARA = :aymara
         AZERI = :azeri
+        BASQUE = :basque
+        BELARUSIAN = :belarusian
         BENGALI = :bengali
+        BOSNIAN = :bosnian
         BULGARIAN = :bulgarian
+        BURMESE = :burmese
         CANTONESE = :cantonese
+        CATALAN = :catalan
         CEBUANO = :cebuano
+        CHINESE = :chinese
+        CORSICAN = :corsican
         CROATIAN = :croatian
         CZECH = :czech
         DANISH = :danish
         DUTCH = :dutch
         ENGLISH = :english
+        ESPERANTO = :esperanto
         ESTONIAN = :estonian
         FARSI = :farsi
+        FIJIAN = :fijian
         FINNISH = :finnish
         FRENCH = :french
+        GALICIAN = :galician
+        GEORGIAN = :georgian
         GERMAN = :german
+        GREEK = :greek
+        GUARANI = :guarani
+        GUJARATI = :gujarati
+        HAITIAN_CREOLE = :"haitian-creole"
         HAUSA = :hausa
         HAWAIIAN = :hawaiian
+        HEBREW = :hebrew
         HINDI = :hindi
+        HMONG = :hmong
         HUNGARIAN = :hungarian
         ICELANDIC = :icelandic
+        IGBO = :igbo
         INDONESIAN = :indonesian
+        IRISH = :irish
         ITALIAN = :italian
+        JAPANESE = :japanese
+        JAVANESE = :javanese
+        KANNADA = :kannada
         KAZAKH = :kazakh
+        KHMER = :khmer
+        KINYARWANDA = :kinyarwanda
         KOREAN = :korean
+        KURDISH = :kurdish
         KYRGYZ = :kyrgyz
+        LAO = :lao
         LATIN = :latin
         LATVIAN = :latvian
+        LINGALA = :lingala
         LITHUANIAN = :lithuanian
+        LUXEMBOURGISH = :luxembourgish
         MACEDONIAN = :macedonian
+        MALAGASY = :malagasy
+        MALAY = :malay
+        MALAYALAM = :malayalam
+        MALTESE = :maltese
+        MAORI = :maori
+        MARATHI = :marathi
         MONGOLIAN = :mongolian
         NEPALI = :nepali
         NORWEGIAN = :norwegian
+        ODIA = :odia
+        OROMO = :oromo
         PASHTO = :pashto
         PIDGIN = :pidgin
         POLISH = :polish
         PORTUGUESE = :portuguese
+        PUNJABI = :punjabi
+        QUECHUA = :quechua
         ROMANIAN = :romanian
         RUSSIAN = :russian
+        SAMOAN = :samoan
+        SCOTTISH_GAELIC = :"scottish-gaelic"
         SERBIAN = :serbian
+        SESOTHO = :sesotho
+        SHONA = :shona
+        SINDHI = :sindhi
+        SINHALA = :sinhala
         SLOVAK = :slovak
         SLOVENE = :slovene
         SOMALI = :somali
         SPANISH = :spanish
+        SUNDANESE = :sundanese
         SWAHILI = :swahili
         SWEDISH = :swedish
         TAGALOG = :tagalog
+        TAJIK = :tajik
+        TAMIL = :tamil
+        TATAR = :tatar
+        TELUGU = :telugu
         THAI = :thai
+        TIBETAN = :tibetan
+        TIGRINYA = :tigrinya
+        TONGAN = :tongan
+        TSWANA = :tswana
         TURKISH = :turkish
+        TURKMEN = :turkmen
         UKRAINIAN = :ukrainian
         URDU = :urdu
+        UYGHUR = :uyghur
         UZBEK = :uzbek
         VIETNAMESE = :vietnamese
         WELSH = :welsh
+        WOLOF = :wolof
+        XHOSA = :xhosa
+        YIDDISH = :yiddish
+        YORUBA = :yoruba
+        ZULU = :zulu
 
         # @!method self.values
         #   @return [Array<Symbol>]

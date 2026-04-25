@@ -19,8 +19,7 @@ module BrandDev
         # Domain name to retrieve brand data for (e.g., 'example.com', 'google.com').
         # Cannot be used with name or ticker parameters.
         domain:,
-        # Optional parameter to force the language of the retrieved brand data. Works with
-        # all three lookup methods.
+        # Optional parameter to force the language of the retrieved brand data.
         force_language: nil,
         # Optional parameter to optimize the API call for maximum speed. When set to true,
         # the API will skip time-consuming operations for faster response at the cost of
@@ -98,27 +97,6 @@ module BrandDev
       )
       end
 
-      # Extract font information from a brand's website including font families, usage
-      # statistics, fallbacks, and element/word counts.
-      sig do
-        params(
-          domain: String,
-          timeout_ms: Integer,
-          request_options: BrandDev::RequestOptions::OrHash
-        ).returns(BrandDev::Models::BrandFontsResponse)
-      end
-      def fonts(
-        # Domain name to extract fonts from (e.g., 'example.com', 'google.com'). The
-        # domain will be automatically normalized and validated.
-        domain:,
-        # Optional timeout in milliseconds for the request. If the request takes longer
-        # than this value, it will be aborted with a 408 status code. Maximum allowed
-        # value is 300000ms (5 minutes).
-        timeout_ms: nil,
-        request_options: {}
-      )
-      end
-
       # Endpoint specially designed for platforms that want to identify transaction data
       # by the transaction title.
       sig do
@@ -149,7 +127,6 @@ module BrandDev
         force_language: nil,
         # When set to true, the API will perform an additional verification steps to
         # ensure the identified brand matches the transaction with high confidence.
-        # Defaults to false.
         high_confidence_only: nil,
         # Optional parameter to optimize the API call for maximum speed. When set to true,
         # the API will skip time-consuming operations for faster response at the cost of
@@ -217,9 +194,8 @@ module BrandDev
       end
 
       # Retrieve brand information using an email address while detecting disposable and
-      # free email addresses. This endpoint extracts the domain from the email address
-      # and returns brand data for that domain. Disposable and free email addresses
-      # (like gmail.com, yahoo.com) will throw a 422 error.
+      # free email addresses. Disposable and free email addresses (like gmail.com,
+      # yahoo.com) will throw a 422 error.
       sig do
         params(
           email: String,
@@ -250,8 +226,7 @@ module BrandDev
       end
 
       # Retrieve brand information using an ISIN (International Securities
-      # Identification Number). This endpoint looks up the company associated with the
-      # ISIN and returns its brand data.
+      # Identification Number).
       sig do
         params(
           isin: String,
@@ -281,8 +256,7 @@ module BrandDev
       )
       end
 
-      # Retrieve brand information using a company name. This endpoint searches for the
-      # company by name and returns its brand data.
+      # Retrieve brand information using a company name.
       sig do
         params(
           name: String,
@@ -298,8 +272,8 @@ module BrandDev
         # Company name to retrieve brand data for (e.g., 'Apple Inc', 'Microsoft
         # Corporation'). Must be 3-30 characters.
         name:,
-        # Optional country code (GL parameter) to specify the country. This affects the
-        # geographic location used for search queries.
+        # Optional country code hint (GL parameter) to specify the country for the company
+        # name.
         country_gl: nil,
         # Optional parameter to force the language of the retrieved brand data.
         force_language: nil,
@@ -315,8 +289,7 @@ module BrandDev
       )
       end
 
-      # Retrieve brand information using a stock ticker symbol. This endpoint looks up
-      # the company associated with the ticker and returns its brand data.
+      # Retrieve brand information using a stock ticker symbol.
       sig do
         params(
           ticker: String,
@@ -349,37 +322,9 @@ module BrandDev
       )
       end
 
-      # Endpoint to classify any brand into a 2022 NAICS code.
-      sig do
-        params(
-          input: String,
-          max_results: Integer,
-          min_results: Integer,
-          timeout_ms: Integer,
-          request_options: BrandDev::RequestOptions::OrHash
-        ).returns(BrandDev::Models::BrandRetrieveNaicsResponse)
-      end
-      def retrieve_naics(
-        # Brand domain or title to retrieve NAICS code for. If a valid domain is provided
-        # in `input`, it will be used for classification, otherwise, we will search for
-        # the brand using the provided title.
-        input:,
-        # Maximum number of NAICS codes to return. Must be between 1 and 10. Defaults
-        # to 5.
-        max_results: nil,
-        # Minimum number of NAICS codes to return. Must be at least 1. Defaults to 1.
-        min_results: nil,
-        # Optional timeout in milliseconds for the request. If the request takes longer
-        # than this value, it will be aborted with a 408 status code. Maximum allowed
-        # value is 300000ms (5 minutes).
-        timeout_ms: nil,
-        request_options: {}
-      )
-      end
-
       # Returns a simplified version of brand data containing only essential
-      # information: domain, title, colors, logos, and backdrops. This endpoint is
-      # optimized for faster responses and reduced data transfer.
+      # information: domain, title, colors, logos, and backdrops. Optimized for faster
+      # responses and reduced data transfer.
       sig do
         params(
           domain: String,
@@ -398,78 +343,26 @@ module BrandDev
       )
       end
 
-      # Capture a screenshot of a website. Supports both viewport (standard browser
-      # view) and full-page screenshots. Can also screenshot specific page types (login,
-      # pricing, etc.) by using heuristics to find the appropriate URL. Returns a URL to
-      # the uploaded screenshot image hosted on our CDN.
-      sig do
-        params(
-          domain: String,
-          full_screenshot:
-            BrandDev::BrandScreenshotParams::FullScreenshot::OrSymbol,
-          page: BrandDev::BrandScreenshotParams::Page::OrSymbol,
-          prioritize: BrandDev::BrandScreenshotParams::Prioritize::OrSymbol,
-          request_options: BrandDev::RequestOptions::OrHash
-        ).returns(BrandDev::Models::BrandScreenshotResponse)
-      end
-      def screenshot(
-        # Domain name to take screenshot of (e.g., 'example.com', 'google.com'). The
-        # domain will be automatically normalized and validated.
-        domain:,
-        # Optional parameter to determine screenshot type. If 'true', takes a full page
-        # screenshot capturing all content. If 'false' or not provided, takes a viewport
-        # screenshot (standard browser view).
-        full_screenshot: nil,
-        # Optional parameter to specify which page type to screenshot. If provided, the
-        # system will scrape the domain's links and use heuristics to find the most
-        # appropriate URL for the specified page type (30 supported languages). If not
-        # provided, screenshots the main domain landing page.
-        page: nil,
-        # Optional parameter to prioritize screenshot capture. If 'speed', optimizes for
-        # faster capture with basic quality. If 'quality', optimizes for higher quality
-        # with longer wait times. Defaults to 'quality' if not provided.
-        prioritize: nil,
-        request_options: {}
-      )
-      end
-
-      # Automatically extract comprehensive design system information from a brand's
-      # website including colors, typography, spacing, shadows, and UI components.
-      # Either 'domain' or 'directUrl' must be provided as a query parameter, but not
-      # both.
-      sig do
-        params(
-          direct_url: String,
-          domain: String,
-          timeout_ms: Integer,
-          request_options: BrandDev::RequestOptions::OrHash
-        ).returns(BrandDev::Models::BrandStyleguideResponse)
-      end
-      def styleguide(
-        # A specific URL to fetch the styleguide from directly, bypassing domain
-        # resolution (e.g., 'https://example.com/design-system').
-        direct_url: nil,
-        # Domain name to extract styleguide from (e.g., 'example.com', 'google.com'). The
-        # domain will be automatically normalized and validated.
-        domain: nil,
-        # Optional timeout in milliseconds for the request. If the request takes longer
-        # than this value, it will be aborted with a 408 status code. Maximum allowed
-        # value is 300000ms (5 minutes).
-        timeout_ms: nil,
-        request_options: {}
-      )
-      end
-
       # Scrapes the given URL and returns the raw HTML content of the page.
       sig do
         params(
           url: String,
+          max_age_ms: Integer,
+          parse_pdf: T::Boolean,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandWebScrapeHTMLResponse)
       end
       def web_scrape_html(
         # Full URL to scrape (must include http:// or https:// protocol)
         url:,
+        # Return a cached result if a prior scrape for the same parameters exists and is
+        # younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
+        # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
+        max_age_ms: nil,
+        # When true (default), PDF URLs are fetched and their text layer is extracted and
+        # returned wrapped in <html><pdf>…</pdf></html>. When false, PDF URLs are skipped
+        # and a 400 WEBSITE_ACCESS_ERROR is returned.
+        parse_pdf: nil,
         request_options: {}
       )
       end
@@ -490,26 +383,35 @@ module BrandDev
       )
       end
 
-      # Scrapes the given URL, converts the HTML content to Markdown, and returns the
-      # result.
+      # Scrapes the given URL into LLM usable Markdown.
       sig do
         params(
           url: String,
           include_images: T::Boolean,
           include_links: T::Boolean,
+          max_age_ms: Integer,
+          parse_pdf: T::Boolean,
           shorten_base64_images: T::Boolean,
           use_main_content_only: T::Boolean,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandWebScrapeMdResponse)
       end
       def web_scrape_md(
-        # Full URL to scrape and convert to markdown (must include http:// or https://
+        # Full URL to scrape into LLM usable Markdown (must include http:// or https://
         # protocol)
         url:,
         # Include image references in Markdown output
         include_images: nil,
         # Preserve hyperlinks in Markdown output
         include_links: nil,
+        # Return a cached result if a prior scrape for the same parameters exists and is
+        # younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
+        # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
+        max_age_ms: nil,
+        # When true (default), PDF URLs are fetched and their text layer is extracted and
+        # converted to Markdown. When false, PDF URLs are skipped and a 400
+        # WEBSITE_ACCESS_ERROR is returned.
+        parse_pdf: nil,
         # Shorten base64-encoded image data in the Markdown output
         shorten_base64_images: nil,
         # Extract only the main content of the page, excluding headers, footers, sidebars,
@@ -519,23 +421,24 @@ module BrandDev
       )
       end
 
-      # Crawls the sitemap of the given domain and returns all discovered page URLs.
-      # Supports sitemap index files (recursive), parallel fetching with concurrency
-      # control, deduplication, and filters out non-page resources (images, PDFs, etc.).
+      # Crawl an entire website's sitemap and return all discovered page URLs.
       sig do
         params(
           domain: String,
           max_links: Integer,
+          url_regex: String,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(BrandDev::Models::BrandWebScrapeSitemapResponse)
       end
       def web_scrape_sitemap(
-        # Domain name to crawl sitemaps for (e.g., 'example.com'). The domain will be
-        # automatically normalized and validated.
+        # Domain to build a sitemap for
         domain:,
         # Maximum number of links to return from the sitemap crawl. Defaults to 10,000.
         # Minimum is 1, maximum is 100,000.
         max_links: nil,
+        # Optional RE2-compatible regex pattern. Only URLs matching this pattern are
+        # returned and counted against maxLinks.
+        url_regex: nil,
         request_options: {}
       )
       end
