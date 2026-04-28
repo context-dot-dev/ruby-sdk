@@ -58,6 +58,19 @@ module BrandDev
         raise ArgumentError.new("api_key is required, and can be set via environ: \"BRAND_DEV_API_KEY\"")
       end
 
+      headers = {}
+      custom_headers_env = ENV["BRAND_DEV_CUSTOM_HEADERS"]
+      unless custom_headers_env.nil?
+        parsed = {}
+        custom_headers_env.split("\n").each do |line|
+          colon = line.index(":")
+          unless colon.nil?
+            parsed[line[0...colon].strip] = line[(colon + 1)..].strip
+          end
+        end
+        headers = parsed.merge(headers)
+      end
+
       @api_key = api_key.to_s
 
       super(
@@ -65,7 +78,8 @@ module BrandDev
         timeout: timeout,
         max_retries: max_retries,
         initial_retry_delay: initial_retry_delay,
-        max_retry_delay: max_retry_delay
+        max_retry_delay: max_retry_delay,
+        headers: headers
       )
 
       @brand = BrandDev::Resources::Brand.new(client: self)
