@@ -1,5 +1,43 @@
 # Changelog
 
+## 1.3.0 (2026-05-01)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** api update ([80e2d8b](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/80e2d8b61925cb7a062423ea70613953d349201b))
+* **api:** api update ([3c1db2e](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/3c1db2ecd33a5f92eaf9c37dab6ee7956a38f379))
+* **api:** api update ([283f267](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/283f2676e5ef02cccf00ce078b38e63ccd9d3387))
+* **api:** api update ([ac2bf07](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/ac2bf07be9f7b5a636016c3f2ec55ca48b5ae971))
+* **api:** api update ([82f99f7](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/82f99f70cb3753d51c8d7befa710962a96b52f34))
+* **api:** api update ([53929a4](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/53929a404ec27e40072dab7db319060ce9356fdf))
+* **api:** api update ([26aa262](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/26aa262ffcd0e82c130a73f5bf4258a02d5d687d))
+* **api:** api update ([8f82145](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/8f82145769a2d825ab755cf3a4a2e2f3db64c0ad))
+* **api:** api update ([93dcfee](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/93dcfee9c2635974a204ae85d237c83845f5eb0d))
+* **api:** api update ([5129523](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/5129523063458daca62963d01ff1837b54c9babf))
+* **api:** api update ([de2601f](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/de2601f83745aa577c0c7629b4621e78218dbc1b))
+* **api:** api update ([7e9e3f5](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/7e9e3f5012f1d11daef7795087699d3d8914ec0a))
+* **api:** api update ([51cf238](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/51cf238020c1726eed5601387902175c0a911963))
+* **api:** api update ([d7243b6](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/d7243b67c34ed41991ffbfd05c20c3fe91bf6b7a))
+* **api:** api update ([7dbc953](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/7dbc953284d17ffdab94cc0cce1c1577bb5bb37d))
+* **api:** api update ([fdc7418](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/fdc741818cf6202016e5b94278590f8d1aa44079))
+* **api:** api update ([3613e92](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/3613e92029d5702a7b86753162c3dddda5ef88d2))
+* **api:** api update ([c523c67](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/c523c67ab269e7b2c2d6f6f50d93960d1a14da09))
+* **api:** api update ([22d1e77](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/22d1e77b4b4cfd0df257f1e8018187de16ea93a0))
+* **api:** api update ([f07badc](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/f07badc8bf3ef80fe032793339c05cb1f74fe2c2))
+* support setting headers via env ([c5921ab](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/c5921ab5e04c5a0cf08ca6673662f31fc4dcde80))
+
+
+### Bug Fixes
+
+* multipart encoding for file arrays ([a4d91a7](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/a4d91a72d7bb1a80f9d24c9914e744437eaecbb3))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([67421f2](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/commit/67421f29c40507b6b9499d80e788914dcf3526b4))
+
 ## 1.2.0 (2026-04-03)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/context-dot-dev/deprecated-brand-ruby-sdk/compare/v1.1.0...v1.2.0)
