@@ -16,6 +16,13 @@ module BrandDev
       sig { returns(String) }
       attr_accessor :url
 
+      # When true, the contents of iframes are rendered to Markdown.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_frames
+
+      sig { params(include_frames: T::Boolean).void }
+      attr_writer :include_frames
+
       # Include image references in Markdown output
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :include_images
@@ -66,6 +73,7 @@ module BrandDev
       sig do
         params(
           url: String,
+          include_frames: T::Boolean,
           include_images: T::Boolean,
           include_links: T::Boolean,
           max_age_ms: Integer,
@@ -79,6 +87,8 @@ module BrandDev
         # Full URL to scrape into LLM usable Markdown (must include http:// or https://
         # protocol)
         url:,
+        # When true, the contents of iframes are rendered to Markdown.
+        include_frames: nil,
         # Include image references in Markdown output
         include_images: nil,
         # Preserve hyperlinks in Markdown output
@@ -104,6 +114,7 @@ module BrandDev
         override.returns(
           {
             url: String,
+            include_frames: T::Boolean,
             include_images: T::Boolean,
             include_links: T::Boolean,
             max_age_ms: Integer,

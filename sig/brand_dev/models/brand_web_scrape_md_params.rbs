@@ -3,6 +3,7 @@ module BrandDev
     type brand_web_scrape_md_params =
       {
         url: String,
+        include_frames: bool,
         include_images: bool,
         include_links: bool,
         max_age_ms: Integer,
@@ -17,6 +18,10 @@ module BrandDev
       include BrandDev::Internal::Type::RequestParameters
 
       attr_accessor url: String
+
+      attr_reader include_frames: bool?
+
+      def include_frames=: (bool) -> bool
 
       attr_reader include_images: bool?
 
@@ -44,6 +49,7 @@ module BrandDev
 
       def initialize: (
         url: String,
+        ?include_frames: bool,
         ?include_images: bool,
         ?include_links: bool,
         ?max_age_ms: Integer,
@@ -55,6 +61,7 @@ module BrandDev
 
       def to_hash: -> {
         url: String,
+        include_frames: bool,
         include_images: bool,
         include_links: bool,
         max_age_ms: Integer,

@@ -393,9 +393,11 @@ module BrandDev
       #
       # Scrapes the given URL and returns the raw HTML content of the page.
       #
-      # @overload web_scrape_html(url:, max_age_ms: nil, parse_pdf: nil, request_options: {})
+      # @overload web_scrape_html(url:, include_frames: nil, max_age_ms: nil, parse_pdf: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape (must include http:// or https:// protocol)
+      #
+      # @param include_frames [Boolean] When true, iframes are rendered inline into the returned HTML.
       #
       # @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
       #
@@ -412,7 +414,11 @@ module BrandDev
         @client.request(
           method: :get,
           path: "web/scrape/html",
-          query: query.transform_keys(max_age_ms: "maxAgeMs", parse_pdf: "parsePDF"),
+          query: query.transform_keys(
+            include_frames: "includeFrames",
+            max_age_ms: "maxAgeMs",
+            parse_pdf: "parsePDF"
+          ),
           model: BrandDev::Models::BrandWebScrapeHTMLResponse,
           options: options
         )
@@ -448,9 +454,11 @@ module BrandDev
       #
       # Scrapes the given URL into LLM usable Markdown.
       #
-      # @overload web_scrape_md(url:, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @overload web_scrape_md(url:, include_frames: nil, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #
       # @param url [String] Full URL to scrape into LLM usable Markdown (must include http:// or https:// pr
+      #
+      # @param include_frames [Boolean] When true, the contents of iframes are rendered to Markdown.
       #
       # @param include_images [Boolean] Include image references in Markdown output
       #
@@ -476,6 +484,7 @@ module BrandDev
           method: :get,
           path: "web/scrape/markdown",
           query: query.transform_keys(
+            include_frames: "includeFrames",
             include_images: "includeImages",
             include_links: "includeLinks",
             max_age_ms: "maxAgeMs",

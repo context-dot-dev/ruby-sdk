@@ -14,6 +14,12 @@ module BrandDev
       #   @return [String]
       required :url, String
 
+      # @!attribute include_frames
+      #   When true, the contents of iframes are rendered to Markdown.
+      #
+      #   @return [Boolean, nil]
+      optional :include_frames, BrandDev::Internal::Type::Boolean
+
       # @!attribute include_images
       #   Include image references in Markdown output
       #
@@ -55,11 +61,13 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :use_main_content_only, BrandDev::Internal::Type::Boolean
 
-      # @!method initialize(url:, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
+      # @!method initialize(url:, include_frames: nil, include_images: nil, include_links: nil, max_age_ms: nil, parse_pdf: nil, shorten_base64_images: nil, use_main_content_only: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {BrandDev::Models::BrandWebScrapeMdParams} for more details.
       #
       #   @param url [String] Full URL to scrape into LLM usable Markdown (must include http:// or https:// pr
+      #
+      #   @param include_frames [Boolean] When true, the contents of iframes are rendered to Markdown.
       #
       #   @param include_images [Boolean] Include image references in Markdown output
       #
