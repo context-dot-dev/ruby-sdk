@@ -1,7 +1,12 @@
 module BrandDev
   module Models
     type brand_web_scrape_html_params =
-      { url: String, max_age_ms: Integer, parse_pdf: bool }
+      {
+        url: String,
+        include_frames: bool,
+        max_age_ms: Integer,
+        parse_pdf: bool
+      }
       & BrandDev::Internal::Type::request_parameters
 
     class BrandWebScrapeHTMLParams < BrandDev::Internal::Type::BaseModel
@@ -9,6 +14,10 @@ module BrandDev
       include BrandDev::Internal::Type::RequestParameters
 
       attr_accessor url: String
+
+      attr_reader include_frames: bool?
+
+      def include_frames=: (bool) -> bool
 
       attr_reader max_age_ms: Integer?
 
@@ -20,6 +29,7 @@ module BrandDev
 
       def initialize: (
         url: String,
+        ?include_frames: bool,
         ?max_age_ms: Integer,
         ?parse_pdf: bool,
         ?request_options: BrandDev::request_opts
@@ -27,6 +37,7 @@ module BrandDev
 
       def to_hash: -> {
         url: String,
+        include_frames: bool,
         max_age_ms: Integer,
         parse_pdf: bool,
         request_options: BrandDev::RequestOptions

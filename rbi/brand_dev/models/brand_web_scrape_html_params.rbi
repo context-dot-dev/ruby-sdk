@@ -15,6 +15,13 @@ module BrandDev
       sig { returns(String) }
       attr_accessor :url
 
+      # When true, iframes are rendered inline into the returned HTML.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :include_frames
+
+      sig { params(include_frames: T::Boolean).void }
+      attr_writer :include_frames
+
       # Return a cached result if a prior scrape for the same parameters exists and is
       # younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
       # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
@@ -36,6 +43,7 @@ module BrandDev
       sig do
         params(
           url: String,
+          include_frames: T::Boolean,
           max_age_ms: Integer,
           parse_pdf: T::Boolean,
           request_options: BrandDev::RequestOptions::OrHash
@@ -44,6 +52,8 @@ module BrandDev
       def self.new(
         # Full URL to scrape (must include http:// or https:// protocol)
         url:,
+        # When true, iframes are rendered inline into the returned HTML.
+        include_frames: nil,
         # Return a cached result if a prior scrape for the same parameters exists and is
         # younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
         # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
@@ -60,6 +70,7 @@ module BrandDev
         override.returns(
           {
             url: String,
+            include_frames: T::Boolean,
             max_age_ms: Integer,
             parse_pdf: T::Boolean,
             request_options: BrandDev::RequestOptions

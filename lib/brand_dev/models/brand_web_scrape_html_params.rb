@@ -13,6 +13,12 @@ module BrandDev
       #   @return [String]
       required :url, String
 
+      # @!attribute include_frames
+      #   When true, iframes are rendered inline into the returned HTML.
+      #
+      #   @return [Boolean, nil]
+      optional :include_frames, BrandDev::Internal::Type::Boolean
+
       # @!attribute max_age_ms
       #   Return a cached result if a prior scrape for the same parameters exists and is
       #   younger than this many milliseconds. Defaults to 1 day (86400000 ms) when
@@ -29,11 +35,13 @@ module BrandDev
       #   @return [Boolean, nil]
       optional :parse_pdf, BrandDev::Internal::Type::Boolean
 
-      # @!method initialize(url:, max_age_ms: nil, parse_pdf: nil, request_options: {})
+      # @!method initialize(url:, include_frames: nil, max_age_ms: nil, parse_pdf: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {BrandDev::Models::BrandWebScrapeHTMLParams} for more details.
       #
       #   @param url [String] Full URL to scrape (must include http:// or https:// protocol)
+      #
+      #   @param include_frames [Boolean] When true, iframes are rendered inline into the returned HTML.
       #
       #   @param max_age_ms [Integer] Return a cached result if a prior scrape for the same parameters exists and is y
       #
