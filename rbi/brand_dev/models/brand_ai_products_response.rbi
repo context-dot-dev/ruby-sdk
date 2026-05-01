@@ -77,6 +77,10 @@ module BrandDev
         sig { returns(String) }
         attr_accessor :name
 
+        # Stock Keeping Unit (product identifier). Null if no identifier is found.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :sku
+
         # Tags associated with the product
         sig { returns(T::Array[String]) }
         attr_accessor :tags
@@ -131,6 +135,7 @@ module BrandDev
             features: T::Array[String],
             images: T::Array[String],
             name: String,
+            sku: T.nilable(String),
             tags: T::Array[String],
             target_audience: T::Array[String],
             billing_frequency:
@@ -157,6 +162,8 @@ module BrandDev
           images:,
           # Name of the product
           name:,
+          # Stock Keeping Unit (product identifier). Null if no identifier is found.
+          sku:,
           # Tags associated with the product
           tags:,
           # Target audience for the product (array of strings)
@@ -185,6 +192,7 @@ module BrandDev
               features: T::Array[String],
               images: T::Array[String],
               name: String,
+              sku: T.nilable(String),
               tags: T::Array[String],
               target_audience: T::Array[String],
               billing_frequency:

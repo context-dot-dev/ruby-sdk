@@ -100,6 +100,15 @@ module BrandDev
         #   @return [String, nil]
         optional :phone, String
 
+        # @!attribute primary_language
+        #   The primary language of the brand's website content. Detected from the HTML lang
+        #   tag, page content analysis, or social media descriptions.
+        #
+        #   @return [Symbol, BrandDev::Models::BrandRetrieveByEmailResponse::Brand::PrimaryLanguage, nil]
+        optional :primary_language,
+                 enum: -> { BrandDev::Models::BrandRetrieveByEmailResponse::Brand::PrimaryLanguage },
+                 nil?: true
+
         # @!attribute slogan
         #   The brand's slogan
         #
@@ -126,7 +135,7 @@ module BrandDev
         #   @return [String, nil]
         optional :title, String
 
-        # @!method initialize(address: nil, backdrops: nil, colors: nil, description: nil, domain: nil, email: nil, industries: nil, is_nsfw: nil, links: nil, logos: nil, phone: nil, slogan: nil, socials: nil, stock: nil, title: nil)
+        # @!method initialize(address: nil, backdrops: nil, colors: nil, description: nil, domain: nil, email: nil, industries: nil, is_nsfw: nil, links: nil, logos: nil, phone: nil, primary_language: nil, slogan: nil, socials: nil, stock: nil, title: nil)
         #   Some parameter documentations has been truncated, see
         #   {BrandDev::Models::BrandRetrieveByEmailResponse::Brand} for more details.
         #
@@ -153,6 +162,8 @@ module BrandDev
         #   @param logos [Array<BrandDev::Models::BrandRetrieveByEmailResponse::Brand::Logo>] An array of logos associated with the brand
         #
         #   @param phone [String] Company phone number
+        #
+        #   @param primary_language [Symbol, BrandDev::Models::BrandRetrieveByEmailResponse::Brand::PrimaryLanguage, nil] The primary language of the brand's website content. Detected from the HTML lang
         #
         #   @param slogan [String] The brand's slogan
         #
@@ -803,12 +814,144 @@ module BrandDev
           end
         end
 
+        # The primary language of the brand's website content. Detected from the HTML lang
+        # tag, page content analysis, or social media descriptions.
+        #
+        # @see BrandDev::Models::BrandRetrieveByEmailResponse::Brand#primary_language
+        module PrimaryLanguage
+          extend BrandDev::Internal::Type::Enum
+
+          AFRIKAANS = :afrikaans
+          ALBANIAN = :albanian
+          AMHARIC = :amharic
+          ARABIC = :arabic
+          ARMENIAN = :armenian
+          ASSAMESE = :assamese
+          AYMARA = :aymara
+          AZERI = :azeri
+          BASQUE = :basque
+          BELARUSIAN = :belarusian
+          BENGALI = :bengali
+          BOSNIAN = :bosnian
+          BULGARIAN = :bulgarian
+          BURMESE = :burmese
+          CANTONESE = :cantonese
+          CATALAN = :catalan
+          CEBUANO = :cebuano
+          CHINESE = :chinese
+          CORSICAN = :corsican
+          CROATIAN = :croatian
+          CZECH = :czech
+          DANISH = :danish
+          DUTCH = :dutch
+          ENGLISH = :english
+          ESPERANTO = :esperanto
+          ESTONIAN = :estonian
+          FARSI = :farsi
+          FIJIAN = :fijian
+          FINNISH = :finnish
+          FRENCH = :french
+          GALICIAN = :galician
+          GEORGIAN = :georgian
+          GERMAN = :german
+          GREEK = :greek
+          GUARANI = :guarani
+          GUJARATI = :gujarati
+          HAITIAN_CREOLE = :"haitian-creole"
+          HAUSA = :hausa
+          HAWAIIAN = :hawaiian
+          HEBREW = :hebrew
+          HINDI = :hindi
+          HMONG = :hmong
+          HUNGARIAN = :hungarian
+          ICELANDIC = :icelandic
+          IGBO = :igbo
+          INDONESIAN = :indonesian
+          IRISH = :irish
+          ITALIAN = :italian
+          JAPANESE = :japanese
+          JAVANESE = :javanese
+          KANNADA = :kannada
+          KAZAKH = :kazakh
+          KHMER = :khmer
+          KINYARWANDA = :kinyarwanda
+          KOREAN = :korean
+          KURDISH = :kurdish
+          KYRGYZ = :kyrgyz
+          LAO = :lao
+          LATIN = :latin
+          LATVIAN = :latvian
+          LINGALA = :lingala
+          LITHUANIAN = :lithuanian
+          LUXEMBOURGISH = :luxembourgish
+          MACEDONIAN = :macedonian
+          MALAGASY = :malagasy
+          MALAY = :malay
+          MALAYALAM = :malayalam
+          MALTESE = :maltese
+          MAORI = :maori
+          MARATHI = :marathi
+          MONGOLIAN = :mongolian
+          NEPALI = :nepali
+          NORWEGIAN = :norwegian
+          ODIA = :odia
+          OROMO = :oromo
+          PASHTO = :pashto
+          PIDGIN = :pidgin
+          POLISH = :polish
+          PORTUGUESE = :portuguese
+          PUNJABI = :punjabi
+          QUECHUA = :quechua
+          ROMANIAN = :romanian
+          RUSSIAN = :russian
+          SAMOAN = :samoan
+          SCOTTISH_GAELIC = :"scottish-gaelic"
+          SERBIAN = :serbian
+          SESOTHO = :sesotho
+          SHONA = :shona
+          SINDHI = :sindhi
+          SINHALA = :sinhala
+          SLOVAK = :slovak
+          SLOVENE = :slovene
+          SOMALI = :somali
+          SPANISH = :spanish
+          SUNDANESE = :sundanese
+          SWAHILI = :swahili
+          SWEDISH = :swedish
+          TAGALOG = :tagalog
+          TAJIK = :tajik
+          TAMIL = :tamil
+          TATAR = :tatar
+          TELUGU = :telugu
+          THAI = :thai
+          TIBETAN = :tibetan
+          TIGRINYA = :tigrinya
+          TONGAN = :tongan
+          TSWANA = :tswana
+          TURKISH = :turkish
+          TURKMEN = :turkmen
+          UKRAINIAN = :ukrainian
+          URDU = :urdu
+          UYGHUR = :uyghur
+          UZBEK = :uzbek
+          VIETNAMESE = :vietnamese
+          WELSH = :welsh
+          WOLOF = :wolof
+          XHOSA = :xhosa
+          YIDDISH = :yiddish
+          YORUBA = :yoruba
+          ZULU = :zulu
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         class Social < BrandDev::Internal::Type::BaseModel
           # @!attribute type
-          #   Type of social media, e.g., 'facebook', 'twitter'
+          #   Type of social media platform
           #
-          #   @return [String, nil]
-          optional :type, String
+          #   @return [Symbol, BrandDev::Models::BrandRetrieveByEmailResponse::Brand::Social::Type, nil]
+          optional :type, enum: -> { BrandDev::Models::BrandRetrieveByEmailResponse::Brand::Social::Type }
 
           # @!attribute url
           #   URL of the social media page
@@ -817,9 +960,51 @@ module BrandDev
           optional :url, String
 
           # @!method initialize(type: nil, url: nil)
-          #   @param type [String] Type of social media, e.g., 'facebook', 'twitter'
+          #   @param type [Symbol, BrandDev::Models::BrandRetrieveByEmailResponse::Brand::Social::Type] Type of social media platform
           #
           #   @param url [String] URL of the social media page
+
+          # Type of social media platform
+          #
+          # @see BrandDev::Models::BrandRetrieveByEmailResponse::Brand::Social#type
+          module Type
+            extend BrandDev::Internal::Type::Enum
+
+            X = :x
+            FACEBOOK = :facebook
+            INSTAGRAM = :instagram
+            LINKEDIN = :linkedin
+            YOUTUBE = :youtube
+            PINTEREST = :pinterest
+            TIKTOK = :tiktok
+            DRIBBBLE = :dribbble
+            GITHUB = :github
+            BEHANCE = :behance
+            SNAPCHAT = :snapchat
+            WHATSAPP = :whatsapp
+            TELEGRAM = :telegram
+            LINE = :line
+            DISCORD = :discord
+            TWITCH = :twitch
+            VIMEO = :vimeo
+            IMDB = :imdb
+            TUMBLR = :tumblr
+            FLICKR = :flickr
+            GIPHY = :giphy
+            MEDIUM = :medium
+            SPOTIFY = :spotify
+            SOUNDCLOUD = :soundcloud
+            TRIPADVISOR = :tripadvisor
+            YELP = :yelp
+            PRODUCTHUNT = :producthunt
+            REDDIT = :reddit
+            CRUNCHBASE = :crunchbase
+            APPSTORE = :appstore
+            PLAYSTORE = :playstore
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see BrandDev::Models::BrandRetrieveByEmailResponse::Brand#stock

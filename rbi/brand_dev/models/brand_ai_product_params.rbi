@@ -15,6 +15,15 @@ module BrandDev
       sig { returns(String) }
       attr_accessor :url
 
+      # Return a cached result if a prior scrape for the same parameters exists and is
+      # younger than this many milliseconds. Defaults to 7 days (604800000 ms) when
+      # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :max_age_ms
+
+      sig { params(max_age_ms: Integer).void }
+      attr_writer :max_age_ms
+
       # Optional timeout in milliseconds for the request. Maximum allowed value is
       # 300000ms (5 minutes).
       sig { returns(T.nilable(Integer)) }
@@ -26,6 +35,7 @@ module BrandDev
       sig do
         params(
           url: String,
+          max_age_ms: Integer,
           timeout_ms: Integer,
           request_options: BrandDev::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -33,6 +43,10 @@ module BrandDev
       def self.new(
         # The product page URL to extract product data from.
         url:,
+        # Return a cached result if a prior scrape for the same parameters exists and is
+        # younger than this many milliseconds. Defaults to 7 days (604800000 ms) when
+        # omitted. Max is 30 days (2592000000 ms). Set to 0 to always scrape fresh.
+        max_age_ms: nil,
         # Optional timeout in milliseconds for the request. Maximum allowed value is
         # 300000ms (5 minutes).
         timeout_ms: nil,
@@ -44,6 +58,7 @@ module BrandDev
         override.returns(
           {
             url: String,
+            max_age_ms: Integer,
             timeout_ms: Integer,
             request_options: BrandDev::RequestOptions
           }

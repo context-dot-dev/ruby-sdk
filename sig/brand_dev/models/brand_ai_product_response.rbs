@@ -47,6 +47,7 @@ module BrandDev
           features: ::Array[String],
           images: ::Array[String],
           name: String,
+          sku: String?,
           tags: ::Array[String],
           target_audience: ::Array[String],
           billing_frequency: BrandDev::Models::BrandAIProductResponse::Product::billing_frequency?,
@@ -66,6 +67,8 @@ module BrandDev
         attr_accessor images: ::Array[String]
 
         attr_accessor name: String
+
+        attr_accessor sku: String?
 
         attr_accessor tags: ::Array[String]
 
@@ -90,6 +93,7 @@ module BrandDev
           features: ::Array[String],
           images: ::Array[String],
           name: String,
+          sku: String?,
           tags: ::Array[String],
           target_audience: ::Array[String],
           ?billing_frequency: BrandDev::Models::BrandAIProductResponse::Product::billing_frequency?,
@@ -106,6 +110,7 @@ module BrandDev
           features: ::Array[String],
           images: ::Array[String],
           name: String,
+          sku: String?,
           tags: ::Array[String],
           target_audience: ::Array[String],
           billing_frequency: BrandDev::Models::BrandAIProductResponse::Product::billing_frequency?,

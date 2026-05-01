@@ -11,6 +11,7 @@ module BrandDev
 
       def ai_product: (
         url: String,
+        ?max_age_ms: Integer,
         ?timeout_ms: Integer,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandAIProductResponse
@@ -27,12 +28,6 @@ module BrandDev
         ?timeout_ms: Integer,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandAIQueryResponse
-
-      def fonts: (
-        domain: String,
-        ?timeout_ms: Integer,
-        ?request_options: BrandDev::request_opts
-      ) -> BrandDev::Models::BrandFontsResponse
 
       def identify_from_transaction: (
         transaction_info: String,
@@ -93,37 +88,17 @@ module BrandDev
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandRetrieveByTickerResponse
 
-      def retrieve_naics: (
-        input: String,
-        ?max_results: Integer,
-        ?min_results: Integer,
-        ?timeout_ms: Integer,
-        ?request_options: BrandDev::request_opts
-      ) -> BrandDev::Models::BrandRetrieveNaicsResponse
-
       def retrieve_simplified: (
         domain: String,
         ?timeout_ms: Integer,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandRetrieveSimplifiedResponse
 
-      def screenshot: (
-        domain: String,
-        ?full_screenshot: BrandDev::Models::BrandScreenshotParams::full_screenshot,
-        ?page: BrandDev::Models::BrandScreenshotParams::page,
-        ?prioritize: BrandDev::Models::BrandScreenshotParams::prioritize,
-        ?request_options: BrandDev::request_opts
-      ) -> BrandDev::Models::BrandScreenshotResponse
-
-      def styleguide: (
-        ?direct_url: String,
-        ?domain: String,
-        ?timeout_ms: Integer,
-        ?request_options: BrandDev::request_opts
-      ) -> BrandDev::Models::BrandStyleguideResponse
-
       def web_scrape_html: (
         url: String,
+        ?include_frames: bool,
+        ?max_age_ms: Integer,
+        ?parse_pdf: bool,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandWebScrapeHTMLResponse
 
@@ -134,8 +109,11 @@ module BrandDev
 
       def web_scrape_md: (
         url: String,
+        ?include_frames: bool,
         ?include_images: bool,
         ?include_links: bool,
+        ?max_age_ms: Integer,
+        ?parse_pdf: bool,
         ?shorten_base64_images: bool,
         ?use_main_content_only: bool,
         ?request_options: BrandDev::request_opts
@@ -144,6 +122,7 @@ module BrandDev
       def web_scrape_sitemap: (
         domain: String,
         ?max_links: Integer,
+        ?url_regex: String,
         ?request_options: BrandDev::request_opts
       ) -> BrandDev::Models::BrandWebScrapeSitemapResponse
 
